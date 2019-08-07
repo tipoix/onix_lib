@@ -10336,7 +10336,7 @@
 				<xs:element minOccurs="0" ref="PackQuantity" />
 				<xs:element minOccurs="0" ref="PalletQuantity" />
 				<xs:sequence minOccurs="0">
-					<xs:element maxOccurs="2" ref="OrderQuantityMinimum" />
+					<xs:element minOccurs="0" ref="OrderQuantityMinimum" />
 					<xs:element minOccurs="0" ref="OrderQuantityMultiple" />
 				</xs:sequence>
 				<xs:choice>

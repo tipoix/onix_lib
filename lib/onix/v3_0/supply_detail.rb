@@ -20,7 +20,7 @@ module Onix
       subnode_accessor :stocks, for_tag: 'Stock', min_occurs: '0', max_occurs: 'unbounded'
       subnode_accessor :pack_quantity, for_tag: 'PackQuantity', min_occurs: '0', max_occurs: '1'
       subnode_accessor :pallet_quantity, for_tag: 'PalletQuantity', min_occurs: '0', max_occurs: '1'
-      subnode_accessor :order_quantity_minimums, for_tag: 'OrderQuantityMinimum', min_occurs: '1', max_occurs: '2'
+      subnode_accessor :order_quantity_minimum, for_tag: 'OrderQuantityMinimum', min_occurs: '0', max_occurs: '1'
       subnode_accessor :order_quantity_multiple, for_tag: 'OrderQuantityMultiple', min_occurs: '0', max_occurs: '1'
       subnode_accessor :unpriced_item_type, for_tag: 'UnpricedItemType', min_occurs: '1', max_occurs: '1'
       subnode_accessor :prices, for_tag: 'Price', min_occurs: '1', max_occurs: 'unbounded'
