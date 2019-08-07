@@ -4,7 +4,7 @@ require_relative 'base'
 
 module Onix
   module V3_0
-    class BibleContent < Base
+    class BibleContents < Base
       onix_code_list :list82
       
       node_attribute_accessor :datestamp, of_type: 'dt.DateOrDateTime'

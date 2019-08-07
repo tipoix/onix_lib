@@ -4,7 +4,7 @@ require_relative 'base'
 
 module Onix
   module V3_0
-    class UnnamedPerson < Base
+    class UnnamedPersons < Base
       onix_code_list :list19
       
       node_attribute_accessor :datestamp, of_type: 'dt.DateOrDateTime'
