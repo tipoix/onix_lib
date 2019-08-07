@@ -1,0 +1,73 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  ReligiousText [
+    label = "{Onix::V3_0::ReligiousText\l|religious_text_identifier\l|bible\lreligious_text_features[]\l}"
+  ]
+
+  ReligiousText -> Bible [arrowhead=none]
+  ReligiousText -> ReligiousTextFeature [arrowhead=normal]
+
+  Bible [
+    label = "{Onix::V3_0::Bible\l|study_bible_type\lbible_text_organization\lbible_reference_location\l|bible_contents[]\lbible_versions[]\lbible_purposes[]\lbible_text_features[]\l}"
+  ]
+
+  Bible -> BibleContents [arrowhead=normal]
+  Bible -> BibleVersion [arrowhead=normal]
+  Bible -> BiblePurpose [arrowhead=normal]
+  Bible -> BibleTextFeature [arrowhead=normal]
+
+  BibleContents [
+    label = "Onix::V3_0::BibleContents", shape = oval
+  ]
+
+
+
+
+  BibleVersion [
+    label = "Onix::V3_0::BibleVersion", shape = oval
+  ]
+
+
+
+
+  BiblePurpose [
+    label = "Onix::V3_0::BiblePurpose", shape = oval
+  ]
+
+
+
+
+  BibleTextFeature [
+    label = "Onix::V3_0::BibleTextFeature", shape = oval
+  ]
+
+
+
+
+  ReligiousTextFeature [
+    label = "{Onix::V3_0::ReligiousTextFeature\l|religious_text_feature_type\lreligious_text_feature_code\l|religious_text_feature_descriptions[]\l}"
+  ]
+
+  ReligiousTextFeature -> ReligiousTextFeatureDescription [arrowhead=normal]
+
+  ReligiousTextFeatureDescription [
+    label = "Onix::V3_0::ReligiousTextFeatureDescription", shape = oval
+  ]
+
+
+
+
+}

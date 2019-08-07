@@ -1,0 +1,29 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  AlternativeName [
+    label = "{Onix::V3_0::AlternativeName\l|name_type\lperson_name\lperson_name_inverted\ltitles_before_names\lnames_before_key\lprefix_to_key\lkey_names\lnames_after_key\lsuffix_to_key\lletters_after_names\ltitles_after_names\lgender\lcorporate_name\lcorporate_name_inverted\l|name_identifiers[]\l}"
+  ]
+
+  AlternativeName -> NameIdentifier [arrowhead=normal]
+
+  NameIdentifier [
+    label = "{Onix::V3_0::NameIdentifier\l|name_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+}

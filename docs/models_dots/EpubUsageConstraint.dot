@@ -1,0 +1,29 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  EpubUsageConstraint [
+    label = "{Onix::V3_0::EpubUsageConstraint\l|epub_usage_type\lepub_usage_status\l|epub_usage_limits[]\l}"
+  ]
+
+  EpubUsageConstraint -> EpubUsageLimit [arrowhead=normal]
+
+  EpubUsageLimit [
+    label = "{Onix::V3_0::EpubUsageLimit\l|quantity\lepub_usage_unit\l|\l}"
+  ]
+
+
+
+
+}

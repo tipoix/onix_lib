@@ -1,0 +1,29 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  Funding [
+    label = "{Onix::V3_0::Funding\l|\l|funding_identifiers[]\l}"
+  ]
+
+  Funding -> FundingIdentifier [arrowhead=normal]
+
+  FundingIdentifier [
+    label = "{Onix::V3_0::FundingIdentifier\l|funding_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+}

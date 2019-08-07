@@ -1,0 +1,29 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  TitleDetail [
+    label = "{Onix::V3_0::TitleDetail\l|title_type\ltitle_statement\l|title_elements[]\l}"
+  ]
+
+  TitleDetail -> TitleElement [arrowhead=normal]
+
+  TitleElement [
+    label = "{Onix::V3_0::TitleElement\l|sequence_number\ltitle_element_level\lpart_number\lyear_of_annual\ltitle_prefix\lno_prefix\ltitle_without_prefix\ltitle_text\lsubtitle\l|\l}"
+  ]
+
+
+
+
+}

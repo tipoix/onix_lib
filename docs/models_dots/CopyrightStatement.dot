@@ -1,0 +1,43 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  CopyrightStatement [
+    label = "{Onix::V3_0::CopyrightStatement\l|copyright_type\l|copyright_years[]\lcopyright_owners[]\l}"
+  ]
+
+  CopyrightStatement -> CopyrightYear [arrowhead=normal]
+  CopyrightStatement -> CopyrightOwner [arrowhead=normal]
+
+  CopyrightYear [
+    label = "Onix::V3_0::CopyrightYear", shape = oval
+  ]
+
+
+
+
+  CopyrightOwner [
+    label = "{Onix::V3_0::CopyrightOwner\l|person_name\lcorporate_name\l|copyright_owner_identifiers[]\l}"
+  ]
+
+  CopyrightOwner -> CopyrightOwnerIdentifier [arrowhead=normal]
+
+  CopyrightOwnerIdentifier [
+    label = "{Onix::V3_0::CopyrightOwnerIdentifier\l|copyright_owner_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+}

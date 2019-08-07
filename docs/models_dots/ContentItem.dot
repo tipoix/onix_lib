@@ -1,0 +1,465 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  ContentItem [
+    label = "{Onix::V3_0::ContentItem\l|level_sequence_number\lcomponent_type_name\lcomponent_number\lno_contributor\l|text_item\lav_item\ltitle_details[]\lcontributors[]\lcontributor_statements[]\llanguages[]\lsubjects[]\lname_as_subjects[]\ltext_contents[]\lcited_contents[]\lsupporting_resources[]\lrelated_works[]\lrelated_products[]\l}"
+  ]
+
+  ContentItem -> TextItem [arrowhead=none]
+  ContentItem -> AVItem [arrowhead=none]
+  ContentItem -> TitleDetail [arrowhead=normal]
+  ContentItem -> Contributor [arrowhead=normal]
+  ContentItem -> ContributorStatement [arrowhead=normal]
+  ContentItem -> Language [arrowhead=normal]
+  ContentItem -> Subject [arrowhead=normal]
+  ContentItem -> NameAsSubject [arrowhead=normal]
+  ContentItem -> TextContent [arrowhead=normal]
+  ContentItem -> CitedContent [arrowhead=normal]
+  ContentItem -> SupportingResource [arrowhead=normal]
+  ContentItem -> RelatedWork [arrowhead=normal]
+  ContentItem -> RelatedProduct [arrowhead=normal]
+
+  TextItem [
+    label = "{Onix::V3_0::TextItem\l|text_item_type\lnumber_of_pages\l|text_item_identifiers[]\lpage_runs[]\l}"
+  ]
+
+  TextItem -> TextItemIdentifier [arrowhead=normal]
+  TextItem -> PageRun [arrowhead=normal]
+
+  TextItemIdentifier [
+    label = "{Onix::V3_0::TextItemIdentifier\l|text_item_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  PageRun [
+    label = "{Onix::V3_0::PageRun\l|first_page_number\llast_page_number\l|\l}"
+  ]
+
+
+
+
+  AVItem [
+    label = "{Onix::V3_0::AVItem\l|av_item_type\lav_duration\l|av_item_identifiers[]\ltime_runs[]\l}"
+  ]
+
+  AVItem -> AVItemIdentifier [arrowhead=normal]
+  AVItem -> TimeRun [arrowhead=normal]
+
+  AVItemIdentifier [
+    label = "{Onix::V3_0::AVItemIdentifier\l|av_item_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  TimeRun [
+    label = "{Onix::V3_0::TimeRun\l|start_time\lend_time\l|\l}"
+  ]
+
+
+
+
+  TitleDetail [
+    label = "{Onix::V3_0::TitleDetail\l|title_type\ltitle_statement\l|title_elements[]\l}"
+  ]
+
+  TitleDetail -> TitleElement [arrowhead=normal]
+
+  TitleElement [
+    label = "{Onix::V3_0::TitleElement\l|sequence_number\ltitle_element_level\lpart_number\lyear_of_annual\ltitle_prefix\lno_prefix\ltitle_without_prefix\ltitle_text\lsubtitle\l|\l}"
+  ]
+
+
+
+
+  Contributor [
+    label = "{Onix::V3_0::Contributor\l|sequence_number\lname_type\lperson_name\lperson_name_inverted\ltitles_before_names\lnames_before_key\lprefix_to_key\lkey_names\lnames_after_key\lsuffix_to_key\lletters_after_names\ltitles_after_names\lgender\lcorporate_name\lcorporate_name_inverted\lunnamed_persons\l|contributor_roles[]\lfrom_languages[]\lto_languages[]\lname_identifiers[]\lalternative_names[]\lcontributor_dates[]\lprofessional_affiliations[]\lprizes[]\lbiographical_notes[]\lwebsites[]\lcontributor_descriptions[]\lcontributor_places[]\l}"
+  ]
+
+  Contributor -> ContributorRole [arrowhead=normal]
+  Contributor -> FromLanguage [arrowhead=normal]
+  Contributor -> ToLanguage [arrowhead=normal]
+  Contributor -> NameIdentifier [arrowhead=normal]
+  Contributor -> AlternativeName [arrowhead=normal]
+  Contributor -> ContributorDate [arrowhead=normal]
+  Contributor -> ProfessionalAffiliation [arrowhead=normal]
+  Contributor -> Prize [arrowhead=normal]
+  Contributor -> BiographicalNote [arrowhead=normal]
+  Contributor -> Website [arrowhead=normal]
+  Contributor -> ContributorDescription [arrowhead=normal]
+  Contributor -> ContributorPlace [arrowhead=normal]
+
+  ContributorRole [
+    label = "Onix::V3_0::ContributorRole", shape = oval
+  ]
+
+
+
+
+  FromLanguage [
+    label = "Onix::V3_0::FromLanguage", shape = oval
+  ]
+
+
+
+
+  ToLanguage [
+    label = "Onix::V3_0::ToLanguage", shape = oval
+  ]
+
+
+
+
+  NameIdentifier [
+    label = "{Onix::V3_0::NameIdentifier\l|name_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  AlternativeName [
+    label = "{Onix::V3_0::AlternativeName\l|name_type\lperson_name\lperson_name_inverted\ltitles_before_names\lnames_before_key\lprefix_to_key\lkey_names\lnames_after_key\lsuffix_to_key\lletters_after_names\ltitles_after_names\lgender\lcorporate_name\lcorporate_name_inverted\l|name_identifiers[]\l}"
+  ]
+
+  AlternativeName -> NameIdentifier [arrowhead=normal]
+
+
+  ContributorDate [
+    label = "{Onix::V3_0::ContributorDate\l|contributor_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+  ProfessionalAffiliation [
+    label = "{Onix::V3_0::ProfessionalAffiliation\l|affiliation\l|professional_positions[]\l}"
+  ]
+
+  ProfessionalAffiliation -> ProfessionalPosition [arrowhead=normal]
+
+  ProfessionalPosition [
+    label = "Onix::V3_0::ProfessionalPosition", shape = oval
+  ]
+
+
+
+
+  Prize [
+    label = "{Onix::V3_0::Prize\l|prize_year\lprize_country\lprize_code\l|prize_names[]\lprize_statements[]\lprize_juries[]\l}"
+  ]
+
+  Prize -> PrizeName [arrowhead=normal]
+  Prize -> PrizeStatement [arrowhead=normal]
+  Prize -> PrizeJury [arrowhead=normal]
+
+  PrizeName [
+    label = "Onix::V3_0::PrizeName", shape = oval
+  ]
+
+
+
+
+  PrizeStatement [
+    label = "Onix::V3_0::PrizeStatement", shape = oval
+  ]
+
+
+
+
+  PrizeJury [
+    label = "Onix::V3_0::PrizeJury", shape = oval
+  ]
+
+
+
+
+  BiographicalNote [
+    label = "Onix::V3_0::BiographicalNote", shape = oval
+  ]
+
+
+
+
+  Website [
+    label = "{Onix::V3_0::Website\l|website_role\lwebsite_link\l|website_descriptions[]\l}"
+  ]
+
+  Website -> WebsiteDescription [arrowhead=normal]
+
+  WebsiteDescription [
+    label = "Onix::V3_0::WebsiteDescription", shape = oval
+  ]
+
+
+
+
+  ContributorDescription [
+    label = "Onix::V3_0::ContributorDescription", shape = oval
+  ]
+
+
+
+
+  ContributorPlace [
+    label = "{Onix::V3_0::ContributorPlace\l|contributor_place_relator\lcountry_code\lregion_code\l|location_names[]\l}"
+  ]
+
+  ContributorPlace -> LocationName [arrowhead=normal]
+
+  LocationName [
+    label = "Onix::V3_0::LocationName", shape = oval
+  ]
+
+
+
+
+  ContributorStatement [
+    label = "Onix::V3_0::ContributorStatement", shape = oval
+  ]
+
+
+
+
+  Language [
+    label = "{Onix::V3_0::Language\l|language_role\llanguage_code\lcountry_code\lscript_code\l|\l}"
+  ]
+
+
+
+
+  Subject [
+    label = "{Onix::V3_0::Subject\l|main_subject\lsubject_scheme_identifier\lsubject_scheme_name\lsubject_scheme_version\lsubject_code\l|subject_heading_texts[]\l}"
+  ]
+
+  Subject -> SubjectHeadingText [arrowhead=normal]
+
+  SubjectHeadingText [
+    label = "Onix::V3_0::SubjectHeadingText", shape = oval
+  ]
+
+
+
+
+  NameAsSubject [
+    label = "{Onix::V3_0::NameAsSubject\l|name_type\lperson_name\lperson_name_inverted\ltitles_before_names\lnames_before_key\lprefix_to_key\lkey_names\lnames_after_key\lsuffix_to_key\lletters_after_names\ltitles_after_names\lgender\lcorporate_name\lcorporate_name_inverted\l|name_identifiers[]\lalternative_names[]\lsubject_dates[]\lprofessional_affiliations[]\l}"
+  ]
+
+  NameAsSubject -> NameIdentifier [arrowhead=normal]
+  NameAsSubject -> AlternativeName [arrowhead=normal]
+  NameAsSubject -> SubjectDate [arrowhead=normal]
+  NameAsSubject -> ProfessionalAffiliation [arrowhead=normal]
+
+
+
+  SubjectDate [
+    label = "{Onix::V3_0::SubjectDate\l|subject_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+
+  TextContent [
+    label = "{Onix::V3_0::TextContent\l|text_type\ltext_source_corporate\l|territory\lreview_rating\lcontent_audiences[]\ltexts[]\ltext_authors[]\lsource_titles[]\lcontent_dates[]\l}"
+  ]
+
+  TextContent -> Territory [arrowhead=none]
+  TextContent -> ReviewRating [arrowhead=none]
+  TextContent -> ContentAudience [arrowhead=normal]
+  TextContent -> Text [arrowhead=normal]
+  TextContent -> TextAuthor [arrowhead=normal]
+  TextContent -> SourceTitle [arrowhead=normal]
+  TextContent -> ContentDate [arrowhead=normal]
+
+  Territory [
+    label = "{Onix::V3_0::Territory\l|countries_included\lregions_included\lregions_excluded\lcountries_excluded\l|\l}"
+  ]
+
+
+
+
+  ReviewRating [
+    label = "{Onix::V3_0::ReviewRating\l|rating\lrating_limit\l|rating_units[]\l}"
+  ]
+
+  ReviewRating -> RatingUnits [arrowhead=normal]
+
+  RatingUnits [
+    label = "Onix::V3_0::RatingUnits", shape = oval
+  ]
+
+
+
+
+  ContentAudience [
+    label = "Onix::V3_0::ContentAudience", shape = oval
+  ]
+
+
+
+
+  Text [
+    label = "Onix::V3_0::Text", shape = oval
+  ]
+
+
+
+
+  TextAuthor [
+    label = "Onix::V3_0::TextAuthor", shape = oval
+  ]
+
+
+
+
+  SourceTitle [
+    label = "Onix::V3_0::SourceTitle", shape = oval
+  ]
+
+
+
+
+  ContentDate [
+    label = "{Onix::V3_0::ContentDate\l|content_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+  CitedContent [
+    label = "{Onix::V3_0::CitedContent\l|cited_content_type\lsource_type\lposition_on_list\l|territory\lreview_rating\lcontent_audiences[]\lsource_titles[]\llist_names[]\lcitation_notes[]\lresource_links[]\lcontent_dates[]\l}"
+  ]
+
+  CitedContent -> Territory [arrowhead=none]
+  CitedContent -> ReviewRating [arrowhead=none]
+  CitedContent -> ContentAudience [arrowhead=normal]
+  CitedContent -> SourceTitle [arrowhead=normal]
+  CitedContent -> ListName [arrowhead=normal]
+  CitedContent -> CitationNote [arrowhead=normal]
+  CitedContent -> ResourceLink [arrowhead=normal]
+  CitedContent -> ContentDate [arrowhead=normal]
+
+
+
+
+
+  ListName [
+    label = "Onix::V3_0::ListName", shape = oval
+  ]
+
+
+
+
+  CitationNote [
+    label = "Onix::V3_0::CitationNote", shape = oval
+  ]
+
+
+
+
+  ResourceLink [
+    label = "Onix::V3_0::ResourceLink", shape = oval
+  ]
+
+
+
+
+
+  SupportingResource [
+    label = "{Onix::V3_0::SupportingResource\l|resource_content_type\lresource_mode\l|territory\lcontent_audiences[]\lresource_features[]\lresource_versions[]\l}"
+  ]
+
+  SupportingResource -> Territory [arrowhead=none]
+  SupportingResource -> ContentAudience [arrowhead=normal]
+  SupportingResource -> ResourceFeature [arrowhead=normal]
+  SupportingResource -> ResourceVersion [arrowhead=normal]
+
+
+
+  ResourceFeature [
+    label = "{Onix::V3_0::ResourceFeature\l|resource_feature_type\lfeature_value\l|feature_notes[]\l}"
+  ]
+
+  ResourceFeature -> FeatureNote [arrowhead=normal]
+
+  FeatureNote [
+    label = "Onix::V3_0::FeatureNote", shape = oval
+  ]
+
+
+
+
+  ResourceVersion [
+    label = "{Onix::V3_0::ResourceVersion\l|resource_form\l|resource_version_features[]\lresource_links[]\lcontent_dates[]\l}"
+  ]
+
+  ResourceVersion -> ResourceVersionFeature [arrowhead=normal]
+  ResourceVersion -> ResourceLink [arrowhead=normal]
+  ResourceVersion -> ContentDate [arrowhead=normal]
+
+  ResourceVersionFeature [
+    label = "{Onix::V3_0::ResourceVersionFeature\l|resource_version_feature_type\lfeature_value\l|feature_notes[]\l}"
+  ]
+
+  ResourceVersionFeature -> FeatureNote [arrowhead=normal]
+
+
+
+
+  RelatedWork [
+    label = "{Onix::V3_0::RelatedWork\l|work_relation_code\l|work_identifiers[]\l}"
+  ]
+
+  RelatedWork -> WorkIdentifier [arrowhead=normal]
+
+  WorkIdentifier [
+    label = "{Onix::V3_0::WorkIdentifier\l|work_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  RelatedProduct [
+    label = "{Onix::V3_0::RelatedProduct\l|product_form\l|product_relation_codes[]\lproduct_identifiers[]\lproduct_form_details[]\l}"
+  ]
+
+  RelatedProduct -> ProductRelationCode [arrowhead=normal]
+  RelatedProduct -> ProductIdentifier [arrowhead=normal]
+  RelatedProduct -> ProductFormDetail [arrowhead=normal]
+
+  ProductRelationCode [
+    label = "Onix::V3_0::ProductRelationCode", shape = oval
+  ]
+
+
+
+
+  ProductIdentifier [
+    label = "{Onix::V3_0::ProductIdentifier\l|product_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  ProductFormDetail [
+    label = "Onix::V3_0::ProductFormDetail", shape = oval
+  ]
+
+
+
+
+}

@@ -1,0 +1,57 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  Publisher [
+    label = "{Onix::V3_0::Publisher\l|publishing_role\lpublisher_name\l|publisher_identifiers[]\lfundings[]\lwebsites[]\l}"
+  ]
+
+  Publisher -> PublisherIdentifier [arrowhead=normal]
+  Publisher -> Funding [arrowhead=normal]
+  Publisher -> Website [arrowhead=normal]
+
+  PublisherIdentifier [
+    label = "{Onix::V3_0::PublisherIdentifier\l|publisher_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  Funding [
+    label = "{Onix::V3_0::Funding\l|\l|funding_identifiers[]\l}"
+  ]
+
+  Funding -> FundingIdentifier [arrowhead=normal]
+
+  FundingIdentifier [
+    label = "{Onix::V3_0::FundingIdentifier\l|funding_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  Website [
+    label = "{Onix::V3_0::Website\l|website_role\lwebsite_link\l|website_descriptions[]\l}"
+  ]
+
+  Website -> WebsiteDescription [arrowhead=normal]
+
+  WebsiteDescription [
+    label = "Onix::V3_0::WebsiteDescription", shape = oval
+  ]
+
+
+
+
+}

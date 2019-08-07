@@ -1,0 +1,65 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  SalesRights [
+    label = "{Onix::V3_0::SalesRights\l|sales_rights_type\lpublisher_name\l|territory\lsales_restrictions[]\lproduct_identifiers[]\l}"
+  ]
+
+  SalesRights -> Territory [arrowhead=none]
+  SalesRights -> SalesRestriction [arrowhead=normal]
+  SalesRights -> ProductIdentifier [arrowhead=normal]
+
+  Territory [
+    label = "{Onix::V3_0::Territory\l|countries_included\lregions_included\lregions_excluded\lcountries_excluded\l|\l}"
+  ]
+
+
+
+
+  SalesRestriction [
+    label = "{Onix::V3_0::SalesRestriction\l|sales_restriction_type\lstart_date\lend_date\l|sales_outlets[]\lsales_restriction_notes[]\l}"
+  ]
+
+  SalesRestriction -> SalesOutlet [arrowhead=normal]
+  SalesRestriction -> SalesRestrictionNote [arrowhead=normal]
+
+  SalesOutlet [
+    label = "{Onix::V3_0::SalesOutlet\l|sales_outlet_name\l|sales_outlet_identifiers[]\l}"
+  ]
+
+  SalesOutlet -> SalesOutletIdentifier [arrowhead=normal]
+
+  SalesOutletIdentifier [
+    label = "{Onix::V3_0::SalesOutletIdentifier\l|sales_outlet_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  SalesRestrictionNote [
+    label = "Onix::V3_0::SalesRestrictionNote", shape = oval
+  ]
+
+
+
+
+  ProductIdentifier [
+    label = "{Onix::V3_0::ProductIdentifier\l|product_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+}

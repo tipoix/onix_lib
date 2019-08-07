@@ -1,0 +1,603 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  DescriptiveDetail [
+    label = "{Onix::V3_0::DescriptiveDetail\l|product_composition\lproduct_form\lproduct_packaging\ltrade_category\lprimary_content_type\lcountry_of_manufacture\lno_collection\lthesis_type\lthesis_presented_to\lthesis_year\lno_contributor\ledition_number\ledition_version_number\lno_edition\lillustrated\lnumber_of_illustrations\l|epub_license\lreligious_text\lproduct_form_details[]\lproduct_form_features[]\lproduct_form_descriptions[]\lproduct_content_types[]\lmeasures[]\lepub_technical_protections[]\lepub_usage_constraints[]\lmap_scales[]\lproduct_classifications[]\lproduct_parts[]\lcollections[]\ltitle_details[]\lcontributors[]\lcontributor_statements[]\levents[]\lconferences[]\ledition_types[]\ledition_statements[]\llanguages[]\lextents[]\lillustrations_notes[]\lancillary_contents[]\lsubjects[]\lname_as_subjects[]\laudience_codes[]\laudiences[]\laudience_ranges[]\laudience_descriptions[]\lcomplexities[]\l}"
+  ]
+
+  DescriptiveDetail -> EpubLicense [arrowhead=none]
+  DescriptiveDetail -> ReligiousText [arrowhead=none]
+  DescriptiveDetail -> ProductFormDetail [arrowhead=normal]
+  DescriptiveDetail -> ProductFormFeature [arrowhead=normal]
+  DescriptiveDetail -> ProductFormDescription [arrowhead=normal]
+  DescriptiveDetail -> ProductContentType [arrowhead=normal]
+  DescriptiveDetail -> Measure [arrowhead=normal]
+  DescriptiveDetail -> EpubTechnicalProtection [arrowhead=normal]
+  DescriptiveDetail -> EpubUsageConstraint [arrowhead=normal]
+  DescriptiveDetail -> MapScale [arrowhead=normal]
+  DescriptiveDetail -> ProductClassification [arrowhead=normal]
+  DescriptiveDetail -> ProductPart [arrowhead=normal]
+  DescriptiveDetail -> Collection [arrowhead=normal]
+  DescriptiveDetail -> TitleDetail [arrowhead=normal]
+  DescriptiveDetail -> Contributor [arrowhead=normal]
+  DescriptiveDetail -> ContributorStatement [arrowhead=normal]
+  DescriptiveDetail -> Event [arrowhead=normal]
+  DescriptiveDetail -> Conference [arrowhead=normal]
+  DescriptiveDetail -> EditionType [arrowhead=normal]
+  DescriptiveDetail -> EditionStatement [arrowhead=normal]
+  DescriptiveDetail -> Language [arrowhead=normal]
+  DescriptiveDetail -> Extent [arrowhead=normal]
+  DescriptiveDetail -> IllustrationsNote [arrowhead=normal]
+  DescriptiveDetail -> AncillaryContent [arrowhead=normal]
+  DescriptiveDetail -> Subject [arrowhead=normal]
+  DescriptiveDetail -> NameAsSubject [arrowhead=normal]
+  DescriptiveDetail -> AudienceCode [arrowhead=normal]
+  DescriptiveDetail -> Audience [arrowhead=normal]
+  DescriptiveDetail -> AudienceRange [arrowhead=normal]
+  DescriptiveDetail -> AudienceDescription [arrowhead=normal]
+  DescriptiveDetail -> Complexity [arrowhead=normal]
+
+  EpubLicense [
+    label = "{Onix::V3_0::EpubLicense\l|\l|epub_license_names[]\lepub_license_expressions[]\l}"
+  ]
+
+  EpubLicense -> EpubLicenseName [arrowhead=normal]
+  EpubLicense -> EpubLicenseExpression [arrowhead=normal]
+
+  EpubLicenseName [
+    label = "Onix::V3_0::EpubLicenseName", shape = oval
+  ]
+
+
+
+
+  EpubLicenseExpression [
+    label = "{Onix::V3_0::EpubLicenseExpression\l|epub_license_expression_type\lepub_license_expression_type_name\lepub_license_expression_link\l|\l}"
+  ]
+
+
+
+
+  ReligiousText [
+    label = "{Onix::V3_0::ReligiousText\l|religious_text_identifier\l|bible\lreligious_text_features[]\l}"
+  ]
+
+  ReligiousText -> Bible [arrowhead=none]
+  ReligiousText -> ReligiousTextFeature [arrowhead=normal]
+
+  Bible [
+    label = "{Onix::V3_0::Bible\l|study_bible_type\lbible_text_organization\lbible_reference_location\l|bible_contents[]\lbible_versions[]\lbible_purposes[]\lbible_text_features[]\l}"
+  ]
+
+  Bible -> BibleContents [arrowhead=normal]
+  Bible -> BibleVersion [arrowhead=normal]
+  Bible -> BiblePurpose [arrowhead=normal]
+  Bible -> BibleTextFeature [arrowhead=normal]
+
+  BibleContents [
+    label = "Onix::V3_0::BibleContents", shape = oval
+  ]
+
+
+
+
+  BibleVersion [
+    label = "Onix::V3_0::BibleVersion", shape = oval
+  ]
+
+
+
+
+  BiblePurpose [
+    label = "Onix::V3_0::BiblePurpose", shape = oval
+  ]
+
+
+
+
+  BibleTextFeature [
+    label = "Onix::V3_0::BibleTextFeature", shape = oval
+  ]
+
+
+
+
+  ReligiousTextFeature [
+    label = "{Onix::V3_0::ReligiousTextFeature\l|religious_text_feature_type\lreligious_text_feature_code\l|religious_text_feature_descriptions[]\l}"
+  ]
+
+  ReligiousTextFeature -> ReligiousTextFeatureDescription [arrowhead=normal]
+
+  ReligiousTextFeatureDescription [
+    label = "Onix::V3_0::ReligiousTextFeatureDescription", shape = oval
+  ]
+
+
+
+
+  ProductFormDetail [
+    label = "Onix::V3_0::ProductFormDetail", shape = oval
+  ]
+
+
+
+
+  ProductFormFeature [
+    label = "{Onix::V3_0::ProductFormFeature\l|product_form_feature_type\lproduct_form_feature_value\l|product_form_feature_descriptions[]\l}"
+  ]
+
+  ProductFormFeature -> ProductFormFeatureDescription [arrowhead=normal]
+
+  ProductFormFeatureDescription [
+    label = "Onix::V3_0::ProductFormFeatureDescription", shape = oval
+  ]
+
+
+
+
+  ProductFormDescription [
+    label = "Onix::V3_0::ProductFormDescription", shape = oval
+  ]
+
+
+
+
+  ProductContentType [
+    label = "Onix::V3_0::ProductContentType", shape = oval
+  ]
+
+
+
+
+  Measure [
+    label = "{Onix::V3_0::Measure\l|measure_type\lmeasurement\lmeasure_unit_code\l|\l}"
+  ]
+
+
+
+
+  EpubTechnicalProtection [
+    label = "Onix::V3_0::EpubTechnicalProtection", shape = oval
+  ]
+
+
+
+
+  EpubUsageConstraint [
+    label = "{Onix::V3_0::EpubUsageConstraint\l|epub_usage_type\lepub_usage_status\l|epub_usage_limits[]\l}"
+  ]
+
+  EpubUsageConstraint -> EpubUsageLimit [arrowhead=normal]
+
+  EpubUsageLimit [
+    label = "{Onix::V3_0::EpubUsageLimit\l|quantity\lepub_usage_unit\l|\l}"
+  ]
+
+
+
+
+  MapScale [
+    label = "Onix::V3_0::MapScale", shape = oval
+  ]
+
+
+
+
+  ProductClassification [
+    label = "{Onix::V3_0::ProductClassification\l|product_classification_type\lproduct_classification_code\lpercent\l|\l}"
+  ]
+
+
+
+
+  ProductPart [
+    label = "{Onix::V3_0::ProductPart\l|primary_part\lproduct_form\lproduct_packaging\lnumber_of_items_of_this_form\lnumber_of_copies\lcountry_of_manufacture\l|product_identifiers[]\lproduct_form_details[]\lproduct_form_features[]\lproduct_form_descriptions[]\lproduct_content_types[]\l}"
+  ]
+
+  ProductPart -> ProductIdentifier [arrowhead=normal]
+  ProductPart -> ProductFormDetail [arrowhead=normal]
+  ProductPart -> ProductFormFeature [arrowhead=normal]
+  ProductPart -> ProductFormDescription [arrowhead=normal]
+  ProductPart -> ProductContentType [arrowhead=normal]
+
+  ProductIdentifier [
+    label = "{Onix::V3_0::ProductIdentifier\l|product_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+
+
+
+
+  Collection [
+    label = "{Onix::V3_0::Collection\l|collection_type\lsource_name\lno_contributor\l|collection_identifiers[]\lcollection_sequences[]\ltitle_details[]\lcontributors[]\lcontributor_statements[]\l}"
+  ]
+
+  Collection -> CollectionIdentifier [arrowhead=normal]
+  Collection -> CollectionSequence [arrowhead=normal]
+  Collection -> TitleDetail [arrowhead=normal]
+  Collection -> Contributor [arrowhead=normal]
+  Collection -> ContributorStatement [arrowhead=normal]
+
+  CollectionIdentifier [
+    label = "{Onix::V3_0::CollectionIdentifier\l|collection_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  CollectionSequence [
+    label = "{Onix::V3_0::CollectionSequence\l|collection_sequence_type\lcollection_sequence_type_name\lcollection_sequence_number\l|\l}"
+  ]
+
+
+
+
+  TitleDetail [
+    label = "{Onix::V3_0::TitleDetail\l|title_type\ltitle_statement\l|title_elements[]\l}"
+  ]
+
+  TitleDetail -> TitleElement [arrowhead=normal]
+
+  TitleElement [
+    label = "{Onix::V3_0::TitleElement\l|sequence_number\ltitle_element_level\lpart_number\lyear_of_annual\ltitle_prefix\lno_prefix\ltitle_without_prefix\ltitle_text\lsubtitle\l|\l}"
+  ]
+
+
+
+
+  Contributor [
+    label = "{Onix::V3_0::Contributor\l|sequence_number\lname_type\lperson_name\lperson_name_inverted\ltitles_before_names\lnames_before_key\lprefix_to_key\lkey_names\lnames_after_key\lsuffix_to_key\lletters_after_names\ltitles_after_names\lgender\lcorporate_name\lcorporate_name_inverted\lunnamed_persons\l|contributor_roles[]\lfrom_languages[]\lto_languages[]\lname_identifiers[]\lalternative_names[]\lcontributor_dates[]\lprofessional_affiliations[]\lprizes[]\lbiographical_notes[]\lwebsites[]\lcontributor_descriptions[]\lcontributor_places[]\l}"
+  ]
+
+  Contributor -> ContributorRole [arrowhead=normal]
+  Contributor -> FromLanguage [arrowhead=normal]
+  Contributor -> ToLanguage [arrowhead=normal]
+  Contributor -> NameIdentifier [arrowhead=normal]
+  Contributor -> AlternativeName [arrowhead=normal]
+  Contributor -> ContributorDate [arrowhead=normal]
+  Contributor -> ProfessionalAffiliation [arrowhead=normal]
+  Contributor -> Prize [arrowhead=normal]
+  Contributor -> BiographicalNote [arrowhead=normal]
+  Contributor -> Website [arrowhead=normal]
+  Contributor -> ContributorDescription [arrowhead=normal]
+  Contributor -> ContributorPlace [arrowhead=normal]
+
+  ContributorRole [
+    label = "Onix::V3_0::ContributorRole", shape = oval
+  ]
+
+
+
+
+  FromLanguage [
+    label = "Onix::V3_0::FromLanguage", shape = oval
+  ]
+
+
+
+
+  ToLanguage [
+    label = "Onix::V3_0::ToLanguage", shape = oval
+  ]
+
+
+
+
+  NameIdentifier [
+    label = "{Onix::V3_0::NameIdentifier\l|name_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  AlternativeName [
+    label = "{Onix::V3_0::AlternativeName\l|name_type\lperson_name\lperson_name_inverted\ltitles_before_names\lnames_before_key\lprefix_to_key\lkey_names\lnames_after_key\lsuffix_to_key\lletters_after_names\ltitles_after_names\lgender\lcorporate_name\lcorporate_name_inverted\l|name_identifiers[]\l}"
+  ]
+
+  AlternativeName -> NameIdentifier [arrowhead=normal]
+
+
+  ContributorDate [
+    label = "{Onix::V3_0::ContributorDate\l|contributor_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+  ProfessionalAffiliation [
+    label = "{Onix::V3_0::ProfessionalAffiliation\l|affiliation\l|professional_positions[]\l}"
+  ]
+
+  ProfessionalAffiliation -> ProfessionalPosition [arrowhead=normal]
+
+  ProfessionalPosition [
+    label = "Onix::V3_0::ProfessionalPosition", shape = oval
+  ]
+
+
+
+
+  Prize [
+    label = "{Onix::V3_0::Prize\l|prize_year\lprize_country\lprize_code\l|prize_names[]\lprize_statements[]\lprize_juries[]\l}"
+  ]
+
+  Prize -> PrizeName [arrowhead=normal]
+  Prize -> PrizeStatement [arrowhead=normal]
+  Prize -> PrizeJury [arrowhead=normal]
+
+  PrizeName [
+    label = "Onix::V3_0::PrizeName", shape = oval
+  ]
+
+
+
+
+  PrizeStatement [
+    label = "Onix::V3_0::PrizeStatement", shape = oval
+  ]
+
+
+
+
+  PrizeJury [
+    label = "Onix::V3_0::PrizeJury", shape = oval
+  ]
+
+
+
+
+  BiographicalNote [
+    label = "Onix::V3_0::BiographicalNote", shape = oval
+  ]
+
+
+
+
+  Website [
+    label = "{Onix::V3_0::Website\l|website_role\lwebsite_link\l|website_descriptions[]\l}"
+  ]
+
+  Website -> WebsiteDescription [arrowhead=normal]
+
+  WebsiteDescription [
+    label = "Onix::V3_0::WebsiteDescription", shape = oval
+  ]
+
+
+
+
+  ContributorDescription [
+    label = "Onix::V3_0::ContributorDescription", shape = oval
+  ]
+
+
+
+
+  ContributorPlace [
+    label = "{Onix::V3_0::ContributorPlace\l|contributor_place_relator\lcountry_code\lregion_code\l|location_names[]\l}"
+  ]
+
+  ContributorPlace -> LocationName [arrowhead=normal]
+
+  LocationName [
+    label = "Onix::V3_0::LocationName", shape = oval
+  ]
+
+
+
+
+  ContributorStatement [
+    label = "Onix::V3_0::ContributorStatement", shape = oval
+  ]
+
+
+
+
+
+
+
+  Event [
+    label = "{Onix::V3_0::Event\l|event_role\levent_number\levent_date\l|event_names[]\levent_acronyms[]\levent_themes[]\levent_places[]\levent_sponsors[]\lwebsites[]\l}"
+  ]
+
+  Event -> EventName [arrowhead=normal]
+  Event -> EventAcronym [arrowhead=normal]
+  Event -> EventTheme [arrowhead=normal]
+  Event -> EventPlace [arrowhead=normal]
+  Event -> EventSponsor [arrowhead=normal]
+  Event -> Website [arrowhead=normal]
+
+  EventName [
+    label = "Onix::V3_0::EventName", shape = oval
+  ]
+
+
+
+
+  EventAcronym [
+    label = "Onix::V3_0::EventAcronym", shape = oval
+  ]
+
+
+
+
+  EventTheme [
+    label = "Onix::V3_0::EventTheme", shape = oval
+  ]
+
+
+
+
+  EventPlace [
+    label = "Onix::V3_0::EventPlace", shape = oval
+  ]
+
+
+
+
+  EventSponsor [
+    label = "{Onix::V3_0::EventSponsor\l|person_name\lcorporate_name\l|event_sponsor_identifiers[]\l}"
+  ]
+
+  EventSponsor -> EventSponsorIdentifier [arrowhead=normal]
+
+  EventSponsorIdentifier [
+    label = "{Onix::V3_0::EventSponsorIdentifier\l|event_sponsor_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+
+  Conference [
+    label = "{Onix::V3_0::Conference\l|conference_role\lconference_name\lconference_acronym\lconference_number\lconference_theme\lconference_date\lconference_place\l|conference_sponsors[]\lwebsites[]\l}"
+  ]
+
+  Conference -> ConferenceSponsor [arrowhead=normal]
+  Conference -> Website [arrowhead=normal]
+
+  ConferenceSponsor [
+    label = "{Onix::V3_0::ConferenceSponsor\l|person_name\lcorporate_name\l|conference_sponsor_identifiers[]\l}"
+  ]
+
+  ConferenceSponsor -> ConferenceSponsorIdentifier [arrowhead=normal]
+
+  ConferenceSponsorIdentifier [
+    label = "{Onix::V3_0::ConferenceSponsorIdentifier\l|conference_sponsor_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+
+  EditionType [
+    label = "Onix::V3_0::EditionType", shape = oval
+  ]
+
+
+
+
+  EditionStatement [
+    label = "Onix::V3_0::EditionStatement", shape = oval
+  ]
+
+
+
+
+  Language [
+    label = "{Onix::V3_0::Language\l|language_role\llanguage_code\lcountry_code\lscript_code\l|\l}"
+  ]
+
+
+
+
+  Extent [
+    label = "{Onix::V3_0::Extent\l|extent_type\lextent_value\lextent_value_roman\lextent_unit\l|\l}"
+  ]
+
+
+
+
+  IllustrationsNote [
+    label = "Onix::V3_0::IllustrationsNote", shape = oval
+  ]
+
+
+
+
+  AncillaryContent [
+    label = "{Onix::V3_0::AncillaryContent\l|ancillary_content_type\lnumber\l|ancillary_content_descriptions[]\l}"
+  ]
+
+  AncillaryContent -> AncillaryContentDescription [arrowhead=normal]
+
+  AncillaryContentDescription [
+    label = "Onix::V3_0::AncillaryContentDescription", shape = oval
+  ]
+
+
+
+
+  Subject [
+    label = "{Onix::V3_0::Subject\l|main_subject\lsubject_scheme_identifier\lsubject_scheme_name\lsubject_scheme_version\lsubject_code\l|subject_heading_texts[]\l}"
+  ]
+
+  Subject -> SubjectHeadingText [arrowhead=normal]
+
+  SubjectHeadingText [
+    label = "Onix::V3_0::SubjectHeadingText", shape = oval
+  ]
+
+
+
+
+  NameAsSubject [
+    label = "{Onix::V3_0::NameAsSubject\l|name_type\lperson_name\lperson_name_inverted\ltitles_before_names\lnames_before_key\lprefix_to_key\lkey_names\lnames_after_key\lsuffix_to_key\lletters_after_names\ltitles_after_names\lgender\lcorporate_name\lcorporate_name_inverted\l|name_identifiers[]\lalternative_names[]\lsubject_dates[]\lprofessional_affiliations[]\l}"
+  ]
+
+  NameAsSubject -> NameIdentifier [arrowhead=normal]
+  NameAsSubject -> AlternativeName [arrowhead=normal]
+  NameAsSubject -> SubjectDate [arrowhead=normal]
+  NameAsSubject -> ProfessionalAffiliation [arrowhead=normal]
+
+
+
+  SubjectDate [
+    label = "{Onix::V3_0::SubjectDate\l|subject_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+
+  AudienceCode [
+    label = "Onix::V3_0::AudienceCode", shape = oval
+  ]
+
+
+
+
+  Audience [
+    label = "{Onix::V3_0::Audience\l|audience_code_type\laudience_code_type_name\laudience_code_value\l|\l}"
+  ]
+
+
+
+
+  AudienceRange [
+    label = "{Onix::V3_0::AudienceRange\l|audience_range_qualifier\laudience_range_precision\laudience_range_value\l|\l}"
+  ]
+
+
+
+
+  AudienceDescription [
+    label = "Onix::V3_0::AudienceDescription", shape = oval
+  ]
+
+
+
+
+  Complexity [
+    label = "{Onix::V3_0::Complexity\l|complexity_scheme_identifier\lcomplexity_code\l|\l}"
+  ]
+
+
+
+
+}

@@ -1,0 +1,23 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  Discount [
+    label = "{Onix::V3_0::Discount\l|discount_type\lquantity\lto_quantity\ldiscount_percent\ldiscount_amount\l|\l}"
+  ]
+
+
+
+
+}

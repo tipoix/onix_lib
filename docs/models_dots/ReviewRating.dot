@@ -1,0 +1,29 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  ReviewRating [
+    label = "{Onix::V3_0::ReviewRating\l|rating\lrating_limit\l|rating_units[]\l}"
+  ]
+
+  ReviewRating -> RatingUnits [arrowhead=normal]
+
+  RatingUnits [
+    label = "Onix::V3_0::RatingUnits", shape = oval
+  ]
+
+
+
+
+}

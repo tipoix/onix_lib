@@ -1,0 +1,23 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  StockQuantityCoded [
+    label = "{Onix::V3_0::StockQuantityCoded\l|stock_quantity_code_type\lstock_quantity_code_type_name\lstock_quantity_code\l|\l}"
+  ]
+
+
+
+
+}

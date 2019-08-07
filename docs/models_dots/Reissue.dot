@@ -1,0 +1,241 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  Reissue [
+    label = "{Onix::V3_0::Reissue\l|reissue_date\lreissue_description\l|prices[]\lsupporting_resources[]\l}"
+  ]
+
+  Reissue -> Price [arrowhead=normal]
+  Reissue -> SupportingResource [arrowhead=normal]
+
+  Price [
+    label = "{Onix::V3_0::Price\l|price_type\lprice_qualifier\lprice_per\lminimum_order_quantity\lprice_status\lprice_amount\ltax_exempt\lunpriced_item_type\lcurrency_code\lcurrency_zone\lprinted_on_product\lposition_on_product\l|epub_license\lprice_coded\lterritory\lprice_identifiers[]\lepub_technical_protections[]\lprice_constraints[]\lprice_type_descriptions[]\lprice_conditions[]\lbatch_bonus[]\ldiscount_codeds[]\ldiscounts[]\ltaxes[]\lcomparison_product_prices[]\lprice_dates[]\l}"
+  ]
+
+  Price -> EpubLicense [arrowhead=none]
+  Price -> PriceCoded [arrowhead=none]
+  Price -> Territory [arrowhead=none]
+  Price -> PriceIdentifier [arrowhead=normal]
+  Price -> EpubTechnicalProtection [arrowhead=normal]
+  Price -> PriceConstraint [arrowhead=normal]
+  Price -> PriceTypeDescription [arrowhead=normal]
+  Price -> PriceCondition [arrowhead=normal]
+  Price -> BatchBonus [arrowhead=normal]
+  Price -> DiscountCoded [arrowhead=normal]
+  Price -> Discount [arrowhead=normal]
+  Price -> Tax [arrowhead=normal]
+  Price -> ComparisonProductPrice [arrowhead=normal]
+  Price -> PriceDate [arrowhead=normal]
+
+  EpubLicense [
+    label = "{Onix::V3_0::EpubLicense\l|\l|epub_license_names[]\lepub_license_expressions[]\l}"
+  ]
+
+  EpubLicense -> EpubLicenseName [arrowhead=normal]
+  EpubLicense -> EpubLicenseExpression [arrowhead=normal]
+
+  EpubLicenseName [
+    label = "Onix::V3_0::EpubLicenseName", shape = oval
+  ]
+
+
+
+
+  EpubLicenseExpression [
+    label = "{Onix::V3_0::EpubLicenseExpression\l|epub_license_expression_type\lepub_license_expression_type_name\lepub_license_expression_link\l|\l}"
+  ]
+
+
+
+
+  PriceCoded [
+    label = "{Onix::V3_0::PriceCoded\l|price_code_type\lprice_code_type_name\lprice_code\l|\l}"
+  ]
+
+
+
+
+  Territory [
+    label = "{Onix::V3_0::Territory\l|countries_included\lregions_included\lregions_excluded\lcountries_excluded\l|\l}"
+  ]
+
+
+
+
+  PriceIdentifier [
+    label = "{Onix::V3_0::PriceIdentifier\l|price_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  EpubTechnicalProtection [
+    label = "Onix::V3_0::EpubTechnicalProtection", shape = oval
+  ]
+
+
+
+
+  PriceConstraint [
+    label = "{Onix::V3_0::PriceConstraint\l|price_constraint_type\lprice_constraint_status\l|price_constraint_limits[]\l}"
+  ]
+
+  PriceConstraint -> PriceConstraintLimit [arrowhead=normal]
+
+  PriceConstraintLimit [
+    label = "{Onix::V3_0::PriceConstraintLimit\l|quantity\lprice_constraint_unit\l|\l}"
+  ]
+
+
+
+
+  PriceTypeDescription [
+    label = "Onix::V3_0::PriceTypeDescription", shape = oval
+  ]
+
+
+
+
+  PriceCondition [
+    label = "{Onix::V3_0::PriceCondition\l|price_condition_type\l|price_condition_quantities[]\lproduct_identifiers[]\l}"
+  ]
+
+  PriceCondition -> PriceConditionQuantity [arrowhead=normal]
+  PriceCondition -> ProductIdentifier [arrowhead=normal]
+
+  PriceConditionQuantity [
+    label = "{Onix::V3_0::PriceConditionQuantity\l|price_condition_quantity_type\lquantity\lquantity_unit\l|\l}"
+  ]
+
+
+
+
+  ProductIdentifier [
+    label = "{Onix::V3_0::ProductIdentifier\l|product_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  BatchBonus [
+    label = "{Onix::V3_0::BatchBonus\l|batch_quantity\lfree_quantity\l|\l}"
+  ]
+
+
+
+
+  DiscountCoded [
+    label = "{Onix::V3_0::DiscountCoded\l|discount_code_type\ldiscount_code_type_name\ldiscount_code\l|\l}"
+  ]
+
+
+
+
+  Discount [
+    label = "{Onix::V3_0::Discount\l|discount_type\lquantity\lto_quantity\ldiscount_percent\ldiscount_amount\l|\l}"
+  ]
+
+
+
+
+  Tax [
+    label = "{Onix::V3_0::Tax\l|tax_type\ltax_rate_code\ltax_rate_percent\ltaxable_amount\ltax_amount\l|product_identifiers[]\lprice_part_descriptions[]\l}"
+  ]
+
+  Tax -> ProductIdentifier [arrowhead=normal]
+  Tax -> PricePartDescription [arrowhead=normal]
+
+
+  PricePartDescription [
+    label = "Onix::V3_0::PricePartDescription", shape = oval
+  ]
+
+
+
+
+  ComparisonProductPrice [
+    label = "{Onix::V3_0::ComparisonProductPrice\l|price_type\lprice_amount\lcurrency_code\l|product_identifiers[]\l}"
+  ]
+
+  ComparisonProductPrice -> ProductIdentifier [arrowhead=normal]
+
+
+  PriceDate [
+    label = "{Onix::V3_0::PriceDate\l|price_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+  SupportingResource [
+    label = "{Onix::V3_0::SupportingResource\l|resource_content_type\lresource_mode\l|territory\lcontent_audiences[]\lresource_features[]\lresource_versions[]\l}"
+  ]
+
+  SupportingResource -> Territory [arrowhead=none]
+  SupportingResource -> ContentAudience [arrowhead=normal]
+  SupportingResource -> ResourceFeature [arrowhead=normal]
+  SupportingResource -> ResourceVersion [arrowhead=normal]
+
+
+  ContentAudience [
+    label = "Onix::V3_0::ContentAudience", shape = oval
+  ]
+
+
+
+
+  ResourceFeature [
+    label = "{Onix::V3_0::ResourceFeature\l|resource_feature_type\lfeature_value\l|feature_notes[]\l}"
+  ]
+
+  ResourceFeature -> FeatureNote [arrowhead=normal]
+
+  FeatureNote [
+    label = "Onix::V3_0::FeatureNote", shape = oval
+  ]
+
+
+
+
+  ResourceVersion [
+    label = "{Onix::V3_0::ResourceVersion\l|resource_form\l|resource_version_features[]\lresource_links[]\lcontent_dates[]\l}"
+  ]
+
+  ResourceVersion -> ResourceVersionFeature [arrowhead=normal]
+  ResourceVersion -> ResourceLink [arrowhead=normal]
+  ResourceVersion -> ContentDate [arrowhead=normal]
+
+  ResourceVersionFeature [
+    label = "{Onix::V3_0::ResourceVersionFeature\l|resource_version_feature_type\lfeature_value\l|feature_notes[]\l}"
+  ]
+
+  ResourceVersionFeature -> FeatureNote [arrowhead=normal]
+
+
+  ResourceLink [
+    label = "Onix::V3_0::ResourceLink", shape = oval
+  ]
+
+
+
+
+  ContentDate [
+    label = "{Onix::V3_0::ContentDate\l|content_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+}

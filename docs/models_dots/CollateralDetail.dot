@@ -1,0 +1,201 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  CollateralDetail [
+    label = "{Onix::V3_0::CollateralDetail\l|\l|text_contents[]\lcited_contents[]\lsupporting_resources[]\lprizes[]\l}"
+  ]
+
+  CollateralDetail -> TextContent [arrowhead=normal]
+  CollateralDetail -> CitedContent [arrowhead=normal]
+  CollateralDetail -> SupportingResource [arrowhead=normal]
+  CollateralDetail -> Prize [arrowhead=normal]
+
+  TextContent [
+    label = "{Onix::V3_0::TextContent\l|text_type\ltext_source_corporate\l|territory\lreview_rating\lcontent_audiences[]\ltexts[]\ltext_authors[]\lsource_titles[]\lcontent_dates[]\l}"
+  ]
+
+  TextContent -> Territory [arrowhead=none]
+  TextContent -> ReviewRating [arrowhead=none]
+  TextContent -> ContentAudience [arrowhead=normal]
+  TextContent -> Text [arrowhead=normal]
+  TextContent -> TextAuthor [arrowhead=normal]
+  TextContent -> SourceTitle [arrowhead=normal]
+  TextContent -> ContentDate [arrowhead=normal]
+
+  Territory [
+    label = "{Onix::V3_0::Territory\l|countries_included\lregions_included\lregions_excluded\lcountries_excluded\l|\l}"
+  ]
+
+
+
+
+  ReviewRating [
+    label = "{Onix::V3_0::ReviewRating\l|rating\lrating_limit\l|rating_units[]\l}"
+  ]
+
+  ReviewRating -> RatingUnits [arrowhead=normal]
+
+  RatingUnits [
+    label = "Onix::V3_0::RatingUnits", shape = oval
+  ]
+
+
+
+
+  ContentAudience [
+    label = "Onix::V3_0::ContentAudience", shape = oval
+  ]
+
+
+
+
+  Text [
+    label = "Onix::V3_0::Text", shape = oval
+  ]
+
+
+
+
+  TextAuthor [
+    label = "Onix::V3_0::TextAuthor", shape = oval
+  ]
+
+
+
+
+  SourceTitle [
+    label = "Onix::V3_0::SourceTitle", shape = oval
+  ]
+
+
+
+
+  ContentDate [
+    label = "{Onix::V3_0::ContentDate\l|content_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+  CitedContent [
+    label = "{Onix::V3_0::CitedContent\l|cited_content_type\lsource_type\lposition_on_list\l|territory\lreview_rating\lcontent_audiences[]\lsource_titles[]\llist_names[]\lcitation_notes[]\lresource_links[]\lcontent_dates[]\l}"
+  ]
+
+  CitedContent -> Territory [arrowhead=none]
+  CitedContent -> ReviewRating [arrowhead=none]
+  CitedContent -> ContentAudience [arrowhead=normal]
+  CitedContent -> SourceTitle [arrowhead=normal]
+  CitedContent -> ListName [arrowhead=normal]
+  CitedContent -> CitationNote [arrowhead=normal]
+  CitedContent -> ResourceLink [arrowhead=normal]
+  CitedContent -> ContentDate [arrowhead=normal]
+
+
+
+
+
+  ListName [
+    label = "Onix::V3_0::ListName", shape = oval
+  ]
+
+
+
+
+  CitationNote [
+    label = "Onix::V3_0::CitationNote", shape = oval
+  ]
+
+
+
+
+  ResourceLink [
+    label = "Onix::V3_0::ResourceLink", shape = oval
+  ]
+
+
+
+
+
+  SupportingResource [
+    label = "{Onix::V3_0::SupportingResource\l|resource_content_type\lresource_mode\l|territory\lcontent_audiences[]\lresource_features[]\lresource_versions[]\l}"
+  ]
+
+  SupportingResource -> Territory [arrowhead=none]
+  SupportingResource -> ContentAudience [arrowhead=normal]
+  SupportingResource -> ResourceFeature [arrowhead=normal]
+  SupportingResource -> ResourceVersion [arrowhead=normal]
+
+
+
+  ResourceFeature [
+    label = "{Onix::V3_0::ResourceFeature\l|resource_feature_type\lfeature_value\l|feature_notes[]\l}"
+  ]
+
+  ResourceFeature -> FeatureNote [arrowhead=normal]
+
+  FeatureNote [
+    label = "Onix::V3_0::FeatureNote", shape = oval
+  ]
+
+
+
+
+  ResourceVersion [
+    label = "{Onix::V3_0::ResourceVersion\l|resource_form\l|resource_version_features[]\lresource_links[]\lcontent_dates[]\l}"
+  ]
+
+  ResourceVersion -> ResourceVersionFeature [arrowhead=normal]
+  ResourceVersion -> ResourceLink [arrowhead=normal]
+  ResourceVersion -> ContentDate [arrowhead=normal]
+
+  ResourceVersionFeature [
+    label = "{Onix::V3_0::ResourceVersionFeature\l|resource_version_feature_type\lfeature_value\l|feature_notes[]\l}"
+  ]
+
+  ResourceVersionFeature -> FeatureNote [arrowhead=normal]
+
+
+
+
+  Prize [
+    label = "{Onix::V3_0::Prize\l|prize_year\lprize_country\lprize_code\l|prize_names[]\lprize_statements[]\lprize_juries[]\l}"
+  ]
+
+  Prize -> PrizeName [arrowhead=normal]
+  Prize -> PrizeStatement [arrowhead=normal]
+  Prize -> PrizeJury [arrowhead=normal]
+
+  PrizeName [
+    label = "Onix::V3_0::PrizeName", shape = oval
+  ]
+
+
+
+
+  PrizeStatement [
+    label = "Onix::V3_0::PrizeStatement", shape = oval
+  ]
+
+
+
+
+  PrizeJury [
+    label = "Onix::V3_0::PrizeJury", shape = oval
+  ]
+
+
+
+
+}

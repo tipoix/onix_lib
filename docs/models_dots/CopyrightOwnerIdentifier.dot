@@ -1,0 +1,23 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  CopyrightOwnerIdentifier [
+    label = "{Onix::V3_0::CopyrightOwnerIdentifier\l|copyright_owner_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+}

@@ -1,0 +1,23 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  AudienceRange [
+    label = "{Onix::V3_0::AudienceRange\l|audience_range_qualifier\laudience_range_precision\laudience_range_value\l|\l}"
+  ]
+
+
+
+
+}

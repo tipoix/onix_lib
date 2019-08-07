@@ -1,0 +1,51 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  ResourceVersion [
+    label = "{Onix::V3_0::ResourceVersion\l|resource_form\l|resource_version_features[]\lresource_links[]\lcontent_dates[]\l}"
+  ]
+
+  ResourceVersion -> ResourceVersionFeature [arrowhead=normal]
+  ResourceVersion -> ResourceLink [arrowhead=normal]
+  ResourceVersion -> ContentDate [arrowhead=normal]
+
+  ResourceVersionFeature [
+    label = "{Onix::V3_0::ResourceVersionFeature\l|resource_version_feature_type\lfeature_value\l|feature_notes[]\l}"
+  ]
+
+  ResourceVersionFeature -> FeatureNote [arrowhead=normal]
+
+  FeatureNote [
+    label = "Onix::V3_0::FeatureNote", shape = oval
+  ]
+
+
+
+
+  ResourceLink [
+    label = "Onix::V3_0::ResourceLink", shape = oval
+  ]
+
+
+
+
+  ContentDate [
+    label = "{Onix::V3_0::ContentDate\l|content_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+}

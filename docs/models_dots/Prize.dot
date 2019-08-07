@@ -1,0 +1,45 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  Prize [
+    label = "{Onix::V3_0::Prize\l|prize_year\lprize_country\lprize_code\l|prize_names[]\lprize_statements[]\lprize_juries[]\l}"
+  ]
+
+  Prize -> PrizeName [arrowhead=normal]
+  Prize -> PrizeStatement [arrowhead=normal]
+  Prize -> PrizeJury [arrowhead=normal]
+
+  PrizeName [
+    label = "Onix::V3_0::PrizeName", shape = oval
+  ]
+
+
+
+
+  PrizeStatement [
+    label = "Onix::V3_0::PrizeStatement", shape = oval
+  ]
+
+
+
+
+  PrizeJury [
+    label = "Onix::V3_0::PrizeJury", shape = oval
+  ]
+
+
+
+
+}

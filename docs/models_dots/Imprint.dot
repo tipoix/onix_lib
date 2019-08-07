@@ -1,0 +1,29 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  Imprint [
+    label = "{Onix::V3_0::Imprint\l|imprint_name\l|imprint_identifiers[]\l}"
+  ]
+
+  Imprint -> ImprintIdentifier [arrowhead=normal]
+
+  ImprintIdentifier [
+    label = "{Onix::V3_0::ImprintIdentifier\l|imprint_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+}

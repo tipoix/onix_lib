@@ -1,0 +1,29 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  Subject [
+    label = "{Onix::V3_0::Subject\l|main_subject\lsubject_scheme_identifier\lsubject_scheme_name\lsubject_scheme_version\lsubject_code\l|subject_heading_texts[]\l}"
+  ]
+
+  Subject -> SubjectHeadingText [arrowhead=normal]
+
+  SubjectHeadingText [
+    label = "Onix::V3_0::SubjectHeadingText", shape = oval
+  ]
+
+
+
+
+}

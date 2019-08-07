@@ -1,0 +1,29 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  AncillaryContent [
+    label = "{Onix::V3_0::AncillaryContent\l|ancillary_content_type\lnumber\l|ancillary_content_descriptions[]\l}"
+  ]
+
+  AncillaryContent -> AncillaryContentDescription [arrowhead=normal]
+
+  AncillaryContentDescription [
+    label = "Onix::V3_0::AncillaryContentDescription", shape = oval
+  ]
+
+
+
+
+}

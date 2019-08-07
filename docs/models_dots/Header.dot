@@ -1,0 +1,57 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  Header [
+    label = "{Onix::V3_0::Header\l|message_number\lmessage_repeat\lsent_date_time\ldefault_language_of_text\ldefault_price_type\ldefault_currency_code\l|sender\laddressees[]\lmessage_notes[]\l}"
+  ]
+
+  Header -> Sender [arrowhead=none]
+  Header -> Addressee [arrowhead=normal]
+  Header -> MessageNote [arrowhead=normal]
+
+  Sender [
+    label = "{Onix::V3_0::Sender\l|sender_name\lcontact_name\lemail_address\l|sender_identifiers[]\l}"
+  ]
+
+  Sender -> SenderIdentifier [arrowhead=normal]
+
+  SenderIdentifier [
+    label = "{Onix::V3_0::SenderIdentifier\l|sender_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  Addressee [
+    label = "{Onix::V3_0::Addressee\l|addressee_name\lcontact_name\lemail_address\l|addressee_identifiers[]\l}"
+  ]
+
+  Addressee -> AddresseeIdentifier [arrowhead=normal]
+
+  AddresseeIdentifier [
+    label = "{Onix::V3_0::AddresseeIdentifier\l|addressee_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  MessageNote [
+    label = "Onix::V3_0::MessageNote", shape = oval
+  ]
+
+
+
+
+}

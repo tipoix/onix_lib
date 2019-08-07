@@ -1,0 +1,37 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  PriceCondition [
+    label = "{Onix::V3_0::PriceCondition\l|price_condition_type\l|price_condition_quantities[]\lproduct_identifiers[]\l}"
+  ]
+
+  PriceCondition -> PriceConditionQuantity [arrowhead=normal]
+  PriceCondition -> ProductIdentifier [arrowhead=normal]
+
+  PriceConditionQuantity [
+    label = "{Onix::V3_0::PriceConditionQuantity\l|price_condition_quantity_type\lquantity\lquantity_unit\l|\l}"
+  ]
+
+
+
+
+  ProductIdentifier [
+    label = "{Onix::V3_0::ProductIdentifier\l|product_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+}

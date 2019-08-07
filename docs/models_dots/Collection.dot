@@ -1,0 +1,201 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  Collection [
+    label = "{Onix::V3_0::Collection\l|collection_type\lsource_name\lno_contributor\l|collection_identifiers[]\lcollection_sequences[]\ltitle_details[]\lcontributors[]\lcontributor_statements[]\l}"
+  ]
+
+  Collection -> CollectionIdentifier [arrowhead=normal]
+  Collection -> CollectionSequence [arrowhead=normal]
+  Collection -> TitleDetail [arrowhead=normal]
+  Collection -> Contributor [arrowhead=normal]
+  Collection -> ContributorStatement [arrowhead=normal]
+
+  CollectionIdentifier [
+    label = "{Onix::V3_0::CollectionIdentifier\l|collection_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  CollectionSequence [
+    label = "{Onix::V3_0::CollectionSequence\l|collection_sequence_type\lcollection_sequence_type_name\lcollection_sequence_number\l|\l}"
+  ]
+
+
+
+
+  TitleDetail [
+    label = "{Onix::V3_0::TitleDetail\l|title_type\ltitle_statement\l|title_elements[]\l}"
+  ]
+
+  TitleDetail -> TitleElement [arrowhead=normal]
+
+  TitleElement [
+    label = "{Onix::V3_0::TitleElement\l|sequence_number\ltitle_element_level\lpart_number\lyear_of_annual\ltitle_prefix\lno_prefix\ltitle_without_prefix\ltitle_text\lsubtitle\l|\l}"
+  ]
+
+
+
+
+  Contributor [
+    label = "{Onix::V3_0::Contributor\l|sequence_number\lname_type\lperson_name\lperson_name_inverted\ltitles_before_names\lnames_before_key\lprefix_to_key\lkey_names\lnames_after_key\lsuffix_to_key\lletters_after_names\ltitles_after_names\lgender\lcorporate_name\lcorporate_name_inverted\lunnamed_persons\l|contributor_roles[]\lfrom_languages[]\lto_languages[]\lname_identifiers[]\lalternative_names[]\lcontributor_dates[]\lprofessional_affiliations[]\lprizes[]\lbiographical_notes[]\lwebsites[]\lcontributor_descriptions[]\lcontributor_places[]\l}"
+  ]
+
+  Contributor -> ContributorRole [arrowhead=normal]
+  Contributor -> FromLanguage [arrowhead=normal]
+  Contributor -> ToLanguage [arrowhead=normal]
+  Contributor -> NameIdentifier [arrowhead=normal]
+  Contributor -> AlternativeName [arrowhead=normal]
+  Contributor -> ContributorDate [arrowhead=normal]
+  Contributor -> ProfessionalAffiliation [arrowhead=normal]
+  Contributor -> Prize [arrowhead=normal]
+  Contributor -> BiographicalNote [arrowhead=normal]
+  Contributor -> Website [arrowhead=normal]
+  Contributor -> ContributorDescription [arrowhead=normal]
+  Contributor -> ContributorPlace [arrowhead=normal]
+
+  ContributorRole [
+    label = "Onix::V3_0::ContributorRole", shape = oval
+  ]
+
+
+
+
+  FromLanguage [
+    label = "Onix::V3_0::FromLanguage", shape = oval
+  ]
+
+
+
+
+  ToLanguage [
+    label = "Onix::V3_0::ToLanguage", shape = oval
+  ]
+
+
+
+
+  NameIdentifier [
+    label = "{Onix::V3_0::NameIdentifier\l|name_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  AlternativeName [
+    label = "{Onix::V3_0::AlternativeName\l|name_type\lperson_name\lperson_name_inverted\ltitles_before_names\lnames_before_key\lprefix_to_key\lkey_names\lnames_after_key\lsuffix_to_key\lletters_after_names\ltitles_after_names\lgender\lcorporate_name\lcorporate_name_inverted\l|name_identifiers[]\l}"
+  ]
+
+  AlternativeName -> NameIdentifier [arrowhead=normal]
+
+
+  ContributorDate [
+    label = "{Onix::V3_0::ContributorDate\l|contributor_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+  ProfessionalAffiliation [
+    label = "{Onix::V3_0::ProfessionalAffiliation\l|affiliation\l|professional_positions[]\l}"
+  ]
+
+  ProfessionalAffiliation -> ProfessionalPosition [arrowhead=normal]
+
+  ProfessionalPosition [
+    label = "Onix::V3_0::ProfessionalPosition", shape = oval
+  ]
+
+
+
+
+  Prize [
+    label = "{Onix::V3_0::Prize\l|prize_year\lprize_country\lprize_code\l|prize_names[]\lprize_statements[]\lprize_juries[]\l}"
+  ]
+
+  Prize -> PrizeName [arrowhead=normal]
+  Prize -> PrizeStatement [arrowhead=normal]
+  Prize -> PrizeJury [arrowhead=normal]
+
+  PrizeName [
+    label = "Onix::V3_0::PrizeName", shape = oval
+  ]
+
+
+
+
+  PrizeStatement [
+    label = "Onix::V3_0::PrizeStatement", shape = oval
+  ]
+
+
+
+
+  PrizeJury [
+    label = "Onix::V3_0::PrizeJury", shape = oval
+  ]
+
+
+
+
+  BiographicalNote [
+    label = "Onix::V3_0::BiographicalNote", shape = oval
+  ]
+
+
+
+
+  Website [
+    label = "{Onix::V3_0::Website\l|website_role\lwebsite_link\l|website_descriptions[]\l}"
+  ]
+
+  Website -> WebsiteDescription [arrowhead=normal]
+
+  WebsiteDescription [
+    label = "Onix::V3_0::WebsiteDescription", shape = oval
+  ]
+
+
+
+
+  ContributorDescription [
+    label = "Onix::V3_0::ContributorDescription", shape = oval
+  ]
+
+
+
+
+  ContributorPlace [
+    label = "{Onix::V3_0::ContributorPlace\l|contributor_place_relator\lcountry_code\lregion_code\l|location_names[]\l}"
+  ]
+
+  ContributorPlace -> LocationName [arrowhead=normal]
+
+  LocationName [
+    label = "Onix::V3_0::LocationName", shape = oval
+  ]
+
+
+
+
+  ContributorStatement [
+    label = "Onix::V3_0::ContributorStatement", shape = oval
+  ]
+
+
+
+
+}

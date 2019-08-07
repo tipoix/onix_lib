@@ -1,0 +1,29 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  Addressee [
+    label = "{Onix::V3_0::Addressee\l|addressee_name\lcontact_name\lemail_address\l|addressee_identifiers[]\l}"
+  ]
+
+  Addressee -> AddresseeIdentifier [arrowhead=normal]
+
+  AddresseeIdentifier [
+    label = "{Onix::V3_0::AddresseeIdentifier\l|addressee_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+}

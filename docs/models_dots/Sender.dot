@@ -1,0 +1,29 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  Sender [
+    label = "{Onix::V3_0::Sender\l|sender_name\lcontact_name\lemail_address\l|sender_identifiers[]\l}"
+  ]
+
+  Sender -> SenderIdentifier [arrowhead=normal]
+
+  SenderIdentifier [
+    label = "{Onix::V3_0::SenderIdentifier\l|sender_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+}

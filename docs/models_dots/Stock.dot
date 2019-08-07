@@ -1,0 +1,61 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  Stock [
+    label = "{Onix::V3_0::Stock\l|on_hand\lproximity\lreserved\lon_order\lcbo\l|location_identifiers[]\llocation_names[]\lstock_quantity_codeds[]\lon_order_details[]\lvelocities[]\l}"
+  ]
+
+  Stock -> LocationIdentifier [arrowhead=normal]
+  Stock -> LocationName [arrowhead=normal]
+  Stock -> StockQuantityCoded [arrowhead=normal]
+  Stock -> OnOrderDetail [arrowhead=normal]
+  Stock -> Velocity [arrowhead=normal]
+
+  LocationIdentifier [
+    label = "{Onix::V3_0::LocationIdentifier\l|location_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  LocationName [
+    label = "Onix::V3_0::LocationName", shape = oval
+  ]
+
+
+
+
+  StockQuantityCoded [
+    label = "{Onix::V3_0::StockQuantityCoded\l|stock_quantity_code_type\lstock_quantity_code_type_name\lstock_quantity_code\l|\l}"
+  ]
+
+
+
+
+  OnOrderDetail [
+    label = "{Onix::V3_0::OnOrderDetail\l|on_order\lproximity\lexpected_date\l|\l}"
+  ]
+
+
+
+
+  Velocity [
+    label = "{Onix::V3_0::Velocity\l|velocity_metric\lrate\lproximity\l|\l}"
+  ]
+
+
+
+
+}

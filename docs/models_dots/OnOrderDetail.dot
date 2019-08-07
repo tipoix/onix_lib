@@ -1,0 +1,23 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  OnOrderDetail [
+    label = "{Onix::V3_0::OnOrderDetail\l|on_order\lproximity\lexpected_date\l|\l}"
+  ]
+
+
+
+
+}

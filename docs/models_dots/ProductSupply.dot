@@ -1,0 +1,545 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  ProductSupply [
+    label = "{Onix::V3_0::ProductSupply\l|\l|market_publishing_detail\lmarkets[]\lsupply_details[]\l}"
+  ]
+
+  ProductSupply -> MarketPublishingDetail [arrowhead=none]
+  ProductSupply -> Market [arrowhead=normal]
+  ProductSupply -> SupplyDetail [arrowhead=normal]
+
+  MarketPublishingDetail [
+    label = "{Onix::V3_0::MarketPublishingDetail\l|market_publishing_status\lpromotion_contact\l|publisher_representatives[]\lproduct_contacts[]\lmarket_publishing_status_notes[]\lmarket_dates[]\lpromotion_campaigns[]\linitial_print_runs[]\lreprint_details[]\lcopies_solds[]\lbook_club_adoptions[]\l}"
+  ]
+
+  MarketPublishingDetail -> PublisherRepresentative [arrowhead=normal]
+  MarketPublishingDetail -> ProductContact [arrowhead=normal]
+  MarketPublishingDetail -> MarketPublishingStatusNote [arrowhead=normal]
+  MarketPublishingDetail -> MarketDate [arrowhead=normal]
+  MarketPublishingDetail -> PromotionCampaign [arrowhead=normal]
+  MarketPublishingDetail -> InitialPrintRun [arrowhead=normal]
+  MarketPublishingDetail -> ReprintDetail [arrowhead=normal]
+  MarketPublishingDetail -> CopiesSold [arrowhead=normal]
+  MarketPublishingDetail -> BookClubAdoption [arrowhead=normal]
+
+  PublisherRepresentative [
+    label = "{Onix::V3_0::PublisherRepresentative\l|agent_role\lagent_name\l|agent_identifiers[]\ltelephone_numbers[]\lfax_numbers[]\lemail_addresses[]\lwebsites[]\l}"
+  ]
+
+  PublisherRepresentative -> AgentIdentifier [arrowhead=normal]
+  PublisherRepresentative -> TelephoneNumber [arrowhead=normal]
+  PublisherRepresentative -> FaxNumber [arrowhead=normal]
+  PublisherRepresentative -> EmailAddress [arrowhead=normal]
+  PublisherRepresentative -> Website [arrowhead=normal]
+
+  AgentIdentifier [
+    label = "{Onix::V3_0::AgentIdentifier\l|agent_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  TelephoneNumber [
+    label = "Onix::V3_0::TelephoneNumber", shape = oval
+  ]
+
+
+
+
+  FaxNumber [
+    label = "Onix::V3_0::FaxNumber", shape = oval
+  ]
+
+
+
+
+  EmailAddress [
+    label = "Onix::V3_0::EmailAddress", shape = oval
+  ]
+
+
+
+
+  Website [
+    label = "{Onix::V3_0::Website\l|website_role\lwebsite_link\l|website_descriptions[]\l}"
+  ]
+
+  Website -> WebsiteDescription [arrowhead=normal]
+
+  WebsiteDescription [
+    label = "Onix::V3_0::WebsiteDescription", shape = oval
+  ]
+
+
+
+
+  ProductContact [
+    label = "{Onix::V3_0::ProductContact\l|product_contact_role\lproduct_contact_name\lcontact_name\lemail_address\l|product_contact_identifiers[]\l}"
+  ]
+
+  ProductContact -> ProductContactIdentifier [arrowhead=normal]
+
+  ProductContactIdentifier [
+    label = "{Onix::V3_0::ProductContactIdentifier\l|product_contact_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  MarketPublishingStatusNote [
+    label = "Onix::V3_0::MarketPublishingStatusNote", shape = oval
+  ]
+
+
+
+
+  MarketDate [
+    label = "{Onix::V3_0::MarketDate\l|market_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+  PromotionCampaign [
+    label = "Onix::V3_0::PromotionCampaign", shape = oval
+  ]
+
+
+
+
+  InitialPrintRun [
+    label = "Onix::V3_0::InitialPrintRun", shape = oval
+  ]
+
+
+
+
+  ReprintDetail [
+    label = "Onix::V3_0::ReprintDetail", shape = oval
+  ]
+
+
+
+
+  CopiesSold [
+    label = "Onix::V3_0::CopiesSold", shape = oval
+  ]
+
+
+
+
+  BookClubAdoption [
+    label = "Onix::V3_0::BookClubAdoption", shape = oval
+  ]
+
+
+
+
+  Market [
+    label = "{Onix::V3_0::Market\l|\l|territory\lsales_restrictions[]\l}"
+  ]
+
+  Market -> Territory [arrowhead=none]
+  Market -> SalesRestriction [arrowhead=normal]
+
+  Territory [
+    label = "{Onix::V3_0::Territory\l|countries_included\lregions_included\lregions_excluded\lcountries_excluded\l|\l}"
+  ]
+
+
+
+
+  SalesRestriction [
+    label = "{Onix::V3_0::SalesRestriction\l|sales_restriction_type\lstart_date\lend_date\l|sales_outlets[]\lsales_restriction_notes[]\l}"
+  ]
+
+  SalesRestriction -> SalesOutlet [arrowhead=normal]
+  SalesRestriction -> SalesRestrictionNote [arrowhead=normal]
+
+  SalesOutlet [
+    label = "{Onix::V3_0::SalesOutlet\l|sales_outlet_name\l|sales_outlet_identifiers[]\l}"
+  ]
+
+  SalesOutlet -> SalesOutletIdentifier [arrowhead=normal]
+
+  SalesOutletIdentifier [
+    label = "{Onix::V3_0::SalesOutletIdentifier\l|sales_outlet_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  SalesRestrictionNote [
+    label = "Onix::V3_0::SalesRestrictionNote", shape = oval
+  ]
+
+
+
+
+  SupplyDetail [
+    label = "{Onix::V3_0::SupplyDetail\l|product_availability\lorder_time\lpack_quantity\lpallet_quantity\lorder_quantity_minimum\lorder_quantity_multiple\lunpriced_item_type\l|supplier\lnew_supplier\lreissue\lsupply_contacts[]\lsupplier_own_codings[]\lreturns_conditions[]\lsupply_dates[]\lstocks[]\lprices[]\l}"
+  ]
+
+  SupplyDetail -> Supplier [arrowhead=none]
+  SupplyDetail -> NewSupplier [arrowhead=none]
+  SupplyDetail -> Reissue [arrowhead=none]
+  SupplyDetail -> SupplyContact [arrowhead=normal]
+  SupplyDetail -> SupplierOwnCoding [arrowhead=normal]
+  SupplyDetail -> ReturnsConditions [arrowhead=normal]
+  SupplyDetail -> SupplyDate [arrowhead=normal]
+  SupplyDetail -> Stock [arrowhead=normal]
+  SupplyDetail -> Price [arrowhead=normal]
+
+  Supplier [
+    label = "{Onix::V3_0::Supplier\l|supplier_role\lsupplier_name\l|supplier_identifiers[]\ltelephone_numbers[]\lfax_numbers[]\lemail_addresses[]\lwebsites[]\l}"
+  ]
+
+  Supplier -> SupplierIdentifier [arrowhead=normal]
+  Supplier -> TelephoneNumber [arrowhead=normal]
+  Supplier -> FaxNumber [arrowhead=normal]
+  Supplier -> EmailAddress [arrowhead=normal]
+  Supplier -> Website [arrowhead=normal]
+
+  SupplierIdentifier [
+    label = "{Onix::V3_0::SupplierIdentifier\l|supplier_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+
+
+
+
+  NewSupplier [
+    label = "{Onix::V3_0::NewSupplier\l|supplier_name\l|supplier_identifiers[]\ltelephone_numbers[]\lfax_numbers[]\lemail_addresses[]\l}"
+  ]
+
+  NewSupplier -> SupplierIdentifier [arrowhead=normal]
+  NewSupplier -> TelephoneNumber [arrowhead=normal]
+  NewSupplier -> FaxNumber [arrowhead=normal]
+  NewSupplier -> EmailAddress [arrowhead=normal]
+
+
+
+
+
+  Reissue [
+    label = "{Onix::V3_0::Reissue\l|reissue_date\lreissue_description\l|prices[]\lsupporting_resources[]\l}"
+  ]
+
+  Reissue -> Price [arrowhead=normal]
+  Reissue -> SupportingResource [arrowhead=normal]
+
+  Price [
+    label = "{Onix::V3_0::Price\l|price_type\lprice_qualifier\lprice_per\lminimum_order_quantity\lprice_status\lprice_amount\ltax_exempt\lunpriced_item_type\lcurrency_code\lcurrency_zone\lprinted_on_product\lposition_on_product\l|epub_license\lprice_coded\lterritory\lprice_identifiers[]\lepub_technical_protections[]\lprice_constraints[]\lprice_type_descriptions[]\lprice_conditions[]\lbatch_bonus[]\ldiscount_codeds[]\ldiscounts[]\ltaxes[]\lcomparison_product_prices[]\lprice_dates[]\l}"
+  ]
+
+  Price -> EpubLicense [arrowhead=none]
+  Price -> PriceCoded [arrowhead=none]
+  Price -> Territory [arrowhead=none]
+  Price -> PriceIdentifier [arrowhead=normal]
+  Price -> EpubTechnicalProtection [arrowhead=normal]
+  Price -> PriceConstraint [arrowhead=normal]
+  Price -> PriceTypeDescription [arrowhead=normal]
+  Price -> PriceCondition [arrowhead=normal]
+  Price -> BatchBonus [arrowhead=normal]
+  Price -> DiscountCoded [arrowhead=normal]
+  Price -> Discount [arrowhead=normal]
+  Price -> Tax [arrowhead=normal]
+  Price -> ComparisonProductPrice [arrowhead=normal]
+  Price -> PriceDate [arrowhead=normal]
+
+  EpubLicense [
+    label = "{Onix::V3_0::EpubLicense\l|\l|epub_license_names[]\lepub_license_expressions[]\l}"
+  ]
+
+  EpubLicense -> EpubLicenseName [arrowhead=normal]
+  EpubLicense -> EpubLicenseExpression [arrowhead=normal]
+
+  EpubLicenseName [
+    label = "Onix::V3_0::EpubLicenseName", shape = oval
+  ]
+
+
+
+
+  EpubLicenseExpression [
+    label = "{Onix::V3_0::EpubLicenseExpression\l|epub_license_expression_type\lepub_license_expression_type_name\lepub_license_expression_link\l|\l}"
+  ]
+
+
+
+
+  PriceCoded [
+    label = "{Onix::V3_0::PriceCoded\l|price_code_type\lprice_code_type_name\lprice_code\l|\l}"
+  ]
+
+
+
+
+
+  PriceIdentifier [
+    label = "{Onix::V3_0::PriceIdentifier\l|price_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  EpubTechnicalProtection [
+    label = "Onix::V3_0::EpubTechnicalProtection", shape = oval
+  ]
+
+
+
+
+  PriceConstraint [
+    label = "{Onix::V3_0::PriceConstraint\l|price_constraint_type\lprice_constraint_status\l|price_constraint_limits[]\l}"
+  ]
+
+  PriceConstraint -> PriceConstraintLimit [arrowhead=normal]
+
+  PriceConstraintLimit [
+    label = "{Onix::V3_0::PriceConstraintLimit\l|quantity\lprice_constraint_unit\l|\l}"
+  ]
+
+
+
+
+  PriceTypeDescription [
+    label = "Onix::V3_0::PriceTypeDescription", shape = oval
+  ]
+
+
+
+
+  PriceCondition [
+    label = "{Onix::V3_0::PriceCondition\l|price_condition_type\l|price_condition_quantities[]\lproduct_identifiers[]\l}"
+  ]
+
+  PriceCondition -> PriceConditionQuantity [arrowhead=normal]
+  PriceCondition -> ProductIdentifier [arrowhead=normal]
+
+  PriceConditionQuantity [
+    label = "{Onix::V3_0::PriceConditionQuantity\l|price_condition_quantity_type\lquantity\lquantity_unit\l|\l}"
+  ]
+
+
+
+
+  ProductIdentifier [
+    label = "{Onix::V3_0::ProductIdentifier\l|product_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  BatchBonus [
+    label = "{Onix::V3_0::BatchBonus\l|batch_quantity\lfree_quantity\l|\l}"
+  ]
+
+
+
+
+  DiscountCoded [
+    label = "{Onix::V3_0::DiscountCoded\l|discount_code_type\ldiscount_code_type_name\ldiscount_code\l|\l}"
+  ]
+
+
+
+
+  Discount [
+    label = "{Onix::V3_0::Discount\l|discount_type\lquantity\lto_quantity\ldiscount_percent\ldiscount_amount\l|\l}"
+  ]
+
+
+
+
+  Tax [
+    label = "{Onix::V3_0::Tax\l|tax_type\ltax_rate_code\ltax_rate_percent\ltaxable_amount\ltax_amount\l|product_identifiers[]\lprice_part_descriptions[]\l}"
+  ]
+
+  Tax -> ProductIdentifier [arrowhead=normal]
+  Tax -> PricePartDescription [arrowhead=normal]
+
+
+  PricePartDescription [
+    label = "Onix::V3_0::PricePartDescription", shape = oval
+  ]
+
+
+
+
+  ComparisonProductPrice [
+    label = "{Onix::V3_0::ComparisonProductPrice\l|price_type\lprice_amount\lcurrency_code\l|product_identifiers[]\l}"
+  ]
+
+  ComparisonProductPrice -> ProductIdentifier [arrowhead=normal]
+
+
+  PriceDate [
+    label = "{Onix::V3_0::PriceDate\l|price_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+  SupportingResource [
+    label = "{Onix::V3_0::SupportingResource\l|resource_content_type\lresource_mode\l|territory\lcontent_audiences[]\lresource_features[]\lresource_versions[]\l}"
+  ]
+
+  SupportingResource -> Territory [arrowhead=none]
+  SupportingResource -> ContentAudience [arrowhead=normal]
+  SupportingResource -> ResourceFeature [arrowhead=normal]
+  SupportingResource -> ResourceVersion [arrowhead=normal]
+
+
+  ContentAudience [
+    label = "Onix::V3_0::ContentAudience", shape = oval
+  ]
+
+
+
+
+  ResourceFeature [
+    label = "{Onix::V3_0::ResourceFeature\l|resource_feature_type\lfeature_value\l|feature_notes[]\l}"
+  ]
+
+  ResourceFeature -> FeatureNote [arrowhead=normal]
+
+  FeatureNote [
+    label = "Onix::V3_0::FeatureNote", shape = oval
+  ]
+
+
+
+
+  ResourceVersion [
+    label = "{Onix::V3_0::ResourceVersion\l|resource_form\l|resource_version_features[]\lresource_links[]\lcontent_dates[]\l}"
+  ]
+
+  ResourceVersion -> ResourceVersionFeature [arrowhead=normal]
+  ResourceVersion -> ResourceLink [arrowhead=normal]
+  ResourceVersion -> ContentDate [arrowhead=normal]
+
+  ResourceVersionFeature [
+    label = "{Onix::V3_0::ResourceVersionFeature\l|resource_version_feature_type\lfeature_value\l|feature_notes[]\l}"
+  ]
+
+  ResourceVersionFeature -> FeatureNote [arrowhead=normal]
+
+
+  ResourceLink [
+    label = "Onix::V3_0::ResourceLink", shape = oval
+  ]
+
+
+
+
+  ContentDate [
+    label = "{Onix::V3_0::ContentDate\l|content_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+  SupplyContact [
+    label = "{Onix::V3_0::SupplyContact\l|supply_contact_role\lsupply_contact_name\lcontact_name\lemail_address\l|supply_contact_identifiers[]\l}"
+  ]
+
+  SupplyContact -> SupplyContactIdentifier [arrowhead=normal]
+
+  SupplyContactIdentifier [
+    label = "{Onix::V3_0::SupplyContactIdentifier\l|supply_contact_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  SupplierOwnCoding [
+    label = "{Onix::V3_0::SupplierOwnCoding\l|supplier_code_type\lsupplier_code_type_name\lsupplier_code_value\l|\l}"
+  ]
+
+
+
+
+  ReturnsConditions [
+    label = "{Onix::V3_0::ReturnsConditions\l|returns_code_type\lreturns_code_type_name\lreturns_code\l|returns_notes[]\l}"
+  ]
+
+  ReturnsConditions -> ReturnsNote [arrowhead=normal]
+
+  ReturnsNote [
+    label = "Onix::V3_0::ReturnsNote", shape = oval
+  ]
+
+
+
+
+  SupplyDate [
+    label = "{Onix::V3_0::SupplyDate\l|supply_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+  Stock [
+    label = "{Onix::V3_0::Stock\l|on_hand\lproximity\lreserved\lon_order\lcbo\l|location_identifiers[]\llocation_names[]\lstock_quantity_codeds[]\lon_order_details[]\lvelocities[]\l}"
+  ]
+
+  Stock -> LocationIdentifier [arrowhead=normal]
+  Stock -> LocationName [arrowhead=normal]
+  Stock -> StockQuantityCoded [arrowhead=normal]
+  Stock -> OnOrderDetail [arrowhead=normal]
+  Stock -> Velocity [arrowhead=normal]
+
+  LocationIdentifier [
+    label = "{Onix::V3_0::LocationIdentifier\l|location_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  LocationName [
+    label = "Onix::V3_0::LocationName", shape = oval
+  ]
+
+
+
+
+  StockQuantityCoded [
+    label = "{Onix::V3_0::StockQuantityCoded\l|stock_quantity_code_type\lstock_quantity_code_type_name\lstock_quantity_code\l|\l}"
+  ]
+
+
+
+
+  OnOrderDetail [
+    label = "{Onix::V3_0::OnOrderDetail\l|on_order\lproximity\lexpected_date\l|\l}"
+  ]
+
+
+
+
+  Velocity [
+    label = "{Onix::V3_0::Velocity\l|velocity_metric\lrate\lproximity\l|\l}"
+  ]
+
+
+
+
+
+}

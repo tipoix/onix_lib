@@ -1,0 +1,81 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  Event [
+    label = "{Onix::V3_0::Event\l|event_role\levent_number\levent_date\l|event_names[]\levent_acronyms[]\levent_themes[]\levent_places[]\levent_sponsors[]\lwebsites[]\l}"
+  ]
+
+  Event -> EventName [arrowhead=normal]
+  Event -> EventAcronym [arrowhead=normal]
+  Event -> EventTheme [arrowhead=normal]
+  Event -> EventPlace [arrowhead=normal]
+  Event -> EventSponsor [arrowhead=normal]
+  Event -> Website [arrowhead=normal]
+
+  EventName [
+    label = "Onix::V3_0::EventName", shape = oval
+  ]
+
+
+
+
+  EventAcronym [
+    label = "Onix::V3_0::EventAcronym", shape = oval
+  ]
+
+
+
+
+  EventTheme [
+    label = "Onix::V3_0::EventTheme", shape = oval
+  ]
+
+
+
+
+  EventPlace [
+    label = "Onix::V3_0::EventPlace", shape = oval
+  ]
+
+
+
+
+  EventSponsor [
+    label = "{Onix::V3_0::EventSponsor\l|person_name\lcorporate_name\l|event_sponsor_identifiers[]\l}"
+  ]
+
+  EventSponsor -> EventSponsorIdentifier [arrowhead=normal]
+
+  EventSponsorIdentifier [
+    label = "{Onix::V3_0::EventSponsorIdentifier\l|event_sponsor_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  Website [
+    label = "{Onix::V3_0::Website\l|website_role\lwebsite_link\l|website_descriptions[]\l}"
+  ]
+
+  Website -> WebsiteDescription [arrowhead=normal]
+
+  WebsiteDescription [
+    label = "Onix::V3_0::WebsiteDescription", shape = oval
+  ]
+
+
+
+
+}

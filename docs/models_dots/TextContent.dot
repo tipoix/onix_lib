@@ -1,0 +1,83 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  TextContent [
+    label = "{Onix::V3_0::TextContent\l|text_type\ltext_source_corporate\l|territory\lreview_rating\lcontent_audiences[]\ltexts[]\ltext_authors[]\lsource_titles[]\lcontent_dates[]\l}"
+  ]
+
+  TextContent -> Territory [arrowhead=none]
+  TextContent -> ReviewRating [arrowhead=none]
+  TextContent -> ContentAudience [arrowhead=normal]
+  TextContent -> Text [arrowhead=normal]
+  TextContent -> TextAuthor [arrowhead=normal]
+  TextContent -> SourceTitle [arrowhead=normal]
+  TextContent -> ContentDate [arrowhead=normal]
+
+  Territory [
+    label = "{Onix::V3_0::Territory\l|countries_included\lregions_included\lregions_excluded\lcountries_excluded\l|\l}"
+  ]
+
+
+
+
+  ReviewRating [
+    label = "{Onix::V3_0::ReviewRating\l|rating\lrating_limit\l|rating_units[]\l}"
+  ]
+
+  ReviewRating -> RatingUnits [arrowhead=normal]
+
+  RatingUnits [
+    label = "Onix::V3_0::RatingUnits", shape = oval
+  ]
+
+
+
+
+  ContentAudience [
+    label = "Onix::V3_0::ContentAudience", shape = oval
+  ]
+
+
+
+
+  Text [
+    label = "Onix::V3_0::Text", shape = oval
+  ]
+
+
+
+
+  TextAuthor [
+    label = "Onix::V3_0::TextAuthor", shape = oval
+  ]
+
+
+
+
+  SourceTitle [
+    label = "Onix::V3_0::SourceTitle", shape = oval
+  ]
+
+
+
+
+  ContentDate [
+    label = "{Onix::V3_0::ContentDate\l|content_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+}

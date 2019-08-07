@@ -1,0 +1,29 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  ProductContact [
+    label = "{Onix::V3_0::ProductContact\l|product_contact_role\lproduct_contact_name\lcontact_name\lemail_address\l|product_contact_identifiers[]\l}"
+  ]
+
+  ProductContact -> ProductContactIdentifier [arrowhead=normal]
+
+  ProductContactIdentifier [
+    label = "{Onix::V3_0::ProductContactIdentifier\l|product_contact_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+}

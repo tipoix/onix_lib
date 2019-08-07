@@ -1,0 +1,49 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  Conference [
+    label = "{Onix::V3_0::Conference\l|conference_role\lconference_name\lconference_acronym\lconference_number\lconference_theme\lconference_date\lconference_place\l|conference_sponsors[]\lwebsites[]\l}"
+  ]
+
+  Conference -> ConferenceSponsor [arrowhead=normal]
+  Conference -> Website [arrowhead=normal]
+
+  ConferenceSponsor [
+    label = "{Onix::V3_0::ConferenceSponsor\l|person_name\lcorporate_name\l|conference_sponsor_identifiers[]\l}"
+  ]
+
+  ConferenceSponsor -> ConferenceSponsorIdentifier [arrowhead=normal]
+
+  ConferenceSponsorIdentifier [
+    label = "{Onix::V3_0::ConferenceSponsorIdentifier\l|conference_sponsor_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  Website [
+    label = "{Onix::V3_0::Website\l|website_role\lwebsite_link\l|website_descriptions[]\l}"
+  ]
+
+  Website -> WebsiteDescription [arrowhead=normal]
+
+  WebsiteDescription [
+    label = "Onix::V3_0::WebsiteDescription", shape = oval
+  ]
+
+
+
+
+}

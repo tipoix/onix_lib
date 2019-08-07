@@ -1,0 +1,53 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  NewSupplier [
+    label = "{Onix::V3_0::NewSupplier\l|supplier_name\l|supplier_identifiers[]\ltelephone_numbers[]\lfax_numbers[]\lemail_addresses[]\l}"
+  ]
+
+  NewSupplier -> SupplierIdentifier [arrowhead=normal]
+  NewSupplier -> TelephoneNumber [arrowhead=normal]
+  NewSupplier -> FaxNumber [arrowhead=normal]
+  NewSupplier -> EmailAddress [arrowhead=normal]
+
+  SupplierIdentifier [
+    label = "{Onix::V3_0::SupplierIdentifier\l|supplier_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  TelephoneNumber [
+    label = "Onix::V3_0::TelephoneNumber", shape = oval
+  ]
+
+
+
+
+  FaxNumber [
+    label = "Onix::V3_0::FaxNumber", shape = oval
+  ]
+
+
+
+
+  EmailAddress [
+    label = "Onix::V3_0::EmailAddress", shape = oval
+  ]
+
+
+
+
+}

@@ -1,0 +1,67 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  PublisherRepresentative [
+    label = "{Onix::V3_0::PublisherRepresentative\l|agent_role\lagent_name\l|agent_identifiers[]\ltelephone_numbers[]\lfax_numbers[]\lemail_addresses[]\lwebsites[]\l}"
+  ]
+
+  PublisherRepresentative -> AgentIdentifier [arrowhead=normal]
+  PublisherRepresentative -> TelephoneNumber [arrowhead=normal]
+  PublisherRepresentative -> FaxNumber [arrowhead=normal]
+  PublisherRepresentative -> EmailAddress [arrowhead=normal]
+  PublisherRepresentative -> Website [arrowhead=normal]
+
+  AgentIdentifier [
+    label = "{Onix::V3_0::AgentIdentifier\l|agent_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  TelephoneNumber [
+    label = "Onix::V3_0::TelephoneNumber", shape = oval
+  ]
+
+
+
+
+  FaxNumber [
+    label = "Onix::V3_0::FaxNumber", shape = oval
+  ]
+
+
+
+
+  EmailAddress [
+    label = "Onix::V3_0::EmailAddress", shape = oval
+  ]
+
+
+
+
+  Website [
+    label = "{Onix::V3_0::Website\l|website_role\lwebsite_link\l|website_descriptions[]\l}"
+  ]
+
+  Website -> WebsiteDescription [arrowhead=normal]
+
+  WebsiteDescription [
+    label = "Onix::V3_0::WebsiteDescription", shape = oval
+  ]
+
+
+
+
+}

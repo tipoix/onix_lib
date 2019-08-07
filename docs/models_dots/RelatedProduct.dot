@@ -1,0 +1,45 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  RelatedProduct [
+    label = "{Onix::V3_0::RelatedProduct\l|product_form\l|product_relation_codes[]\lproduct_identifiers[]\lproduct_form_details[]\l}"
+  ]
+
+  RelatedProduct -> ProductRelationCode [arrowhead=normal]
+  RelatedProduct -> ProductIdentifier [arrowhead=normal]
+  RelatedProduct -> ProductFormDetail [arrowhead=normal]
+
+  ProductRelationCode [
+    label = "Onix::V3_0::ProductRelationCode", shape = oval
+  ]
+
+
+
+
+  ProductIdentifier [
+    label = "{Onix::V3_0::ProductIdentifier\l|product_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  ProductFormDetail [
+    label = "Onix::V3_0::ProductFormDetail", shape = oval
+  ]
+
+
+
+
+}

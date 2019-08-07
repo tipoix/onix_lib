@@ -1,0 +1,29 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  ProductFormFeature [
+    label = "{Onix::V3_0::ProductFormFeature\l|product_form_feature_type\lproduct_form_feature_value\l|product_form_feature_descriptions[]\l}"
+  ]
+
+  ProductFormFeature -> ProductFormFeatureDescription [arrowhead=normal]
+
+  ProductFormFeatureDescription [
+    label = "Onix::V3_0::ProductFormFeatureDescription", shape = oval
+  ]
+
+
+
+
+}

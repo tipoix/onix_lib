@@ -1,0 +1,143 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  MarketPublishingDetail [
+    label = "{Onix::V3_0::MarketPublishingDetail\l|market_publishing_status\lpromotion_contact\l|publisher_representatives[]\lproduct_contacts[]\lmarket_publishing_status_notes[]\lmarket_dates[]\lpromotion_campaigns[]\linitial_print_runs[]\lreprint_details[]\lcopies_solds[]\lbook_club_adoptions[]\l}"
+  ]
+
+  MarketPublishingDetail -> PublisherRepresentative [arrowhead=normal]
+  MarketPublishingDetail -> ProductContact [arrowhead=normal]
+  MarketPublishingDetail -> MarketPublishingStatusNote [arrowhead=normal]
+  MarketPublishingDetail -> MarketDate [arrowhead=normal]
+  MarketPublishingDetail -> PromotionCampaign [arrowhead=normal]
+  MarketPublishingDetail -> InitialPrintRun [arrowhead=normal]
+  MarketPublishingDetail -> ReprintDetail [arrowhead=normal]
+  MarketPublishingDetail -> CopiesSold [arrowhead=normal]
+  MarketPublishingDetail -> BookClubAdoption [arrowhead=normal]
+
+  PublisherRepresentative [
+    label = "{Onix::V3_0::PublisherRepresentative\l|agent_role\lagent_name\l|agent_identifiers[]\ltelephone_numbers[]\lfax_numbers[]\lemail_addresses[]\lwebsites[]\l}"
+  ]
+
+  PublisherRepresentative -> AgentIdentifier [arrowhead=normal]
+  PublisherRepresentative -> TelephoneNumber [arrowhead=normal]
+  PublisherRepresentative -> FaxNumber [arrowhead=normal]
+  PublisherRepresentative -> EmailAddress [arrowhead=normal]
+  PublisherRepresentative -> Website [arrowhead=normal]
+
+  AgentIdentifier [
+    label = "{Onix::V3_0::AgentIdentifier\l|agent_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  TelephoneNumber [
+    label = "Onix::V3_0::TelephoneNumber", shape = oval
+  ]
+
+
+
+
+  FaxNumber [
+    label = "Onix::V3_0::FaxNumber", shape = oval
+  ]
+
+
+
+
+  EmailAddress [
+    label = "Onix::V3_0::EmailAddress", shape = oval
+  ]
+
+
+
+
+  Website [
+    label = "{Onix::V3_0::Website\l|website_role\lwebsite_link\l|website_descriptions[]\l}"
+  ]
+
+  Website -> WebsiteDescription [arrowhead=normal]
+
+  WebsiteDescription [
+    label = "Onix::V3_0::WebsiteDescription", shape = oval
+  ]
+
+
+
+
+  ProductContact [
+    label = "{Onix::V3_0::ProductContact\l|product_contact_role\lproduct_contact_name\lcontact_name\lemail_address\l|product_contact_identifiers[]\l}"
+  ]
+
+  ProductContact -> ProductContactIdentifier [arrowhead=normal]
+
+  ProductContactIdentifier [
+    label = "{Onix::V3_0::ProductContactIdentifier\l|product_contact_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  MarketPublishingStatusNote [
+    label = "Onix::V3_0::MarketPublishingStatusNote", shape = oval
+  ]
+
+
+
+
+  MarketDate [
+    label = "{Onix::V3_0::MarketDate\l|market_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+  PromotionCampaign [
+    label = "Onix::V3_0::PromotionCampaign", shape = oval
+  ]
+
+
+
+
+  InitialPrintRun [
+    label = "Onix::V3_0::InitialPrintRun", shape = oval
+  ]
+
+
+
+
+  ReprintDetail [
+    label = "Onix::V3_0::ReprintDetail", shape = oval
+  ]
+
+
+
+
+  CopiesSold [
+    label = "Onix::V3_0::CopiesSold", shape = oval
+  ]
+
+
+
+
+  BookClubAdoption [
+    label = "Onix::V3_0::BookClubAdoption", shape = oval
+  ]
+
+
+
+
+}

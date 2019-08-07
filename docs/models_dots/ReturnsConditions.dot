@@ -1,0 +1,29 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  ReturnsConditions [
+    label = "{Onix::V3_0::ReturnsConditions\l|returns_code_type\lreturns_code_type_name\lreturns_code\l|returns_notes[]\l}"
+  ]
+
+  ReturnsConditions -> ReturnsNote [arrowhead=normal]
+
+  ReturnsNote [
+    label = "Onix::V3_0::ReturnsNote", shape = oval
+  ]
+
+
+
+
+}

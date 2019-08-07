@@ -1,0 +1,29 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  PriceConstraint [
+    label = "{Onix::V3_0::PriceConstraint\l|price_constraint_type\lprice_constraint_status\l|price_constraint_limits[]\l}"
+  ]
+
+  PriceConstraint -> PriceConstraintLimit [arrowhead=normal]
+
+  PriceConstraintLimit [
+    label = "{Onix::V3_0::PriceConstraintLimit\l|quantity\lprice_constraint_unit\l|\l}"
+  ]
+
+
+
+
+}

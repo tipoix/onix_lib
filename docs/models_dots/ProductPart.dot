@@ -1,0 +1,67 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  ProductPart [
+    label = "{Onix::V3_0::ProductPart\l|primary_part\lproduct_form\lproduct_packaging\lnumber_of_items_of_this_form\lnumber_of_copies\lcountry_of_manufacture\l|product_identifiers[]\lproduct_form_details[]\lproduct_form_features[]\lproduct_form_descriptions[]\lproduct_content_types[]\l}"
+  ]
+
+  ProductPart -> ProductIdentifier [arrowhead=normal]
+  ProductPart -> ProductFormDetail [arrowhead=normal]
+  ProductPart -> ProductFormFeature [arrowhead=normal]
+  ProductPart -> ProductFormDescription [arrowhead=normal]
+  ProductPart -> ProductContentType [arrowhead=normal]
+
+  ProductIdentifier [
+    label = "{Onix::V3_0::ProductIdentifier\l|product_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  ProductFormDetail [
+    label = "Onix::V3_0::ProductFormDetail", shape = oval
+  ]
+
+
+
+
+  ProductFormFeature [
+    label = "{Onix::V3_0::ProductFormFeature\l|product_form_feature_type\lproduct_form_feature_value\l|product_form_feature_descriptions[]\l}"
+  ]
+
+  ProductFormFeature -> ProductFormFeatureDescription [arrowhead=normal]
+
+  ProductFormFeatureDescription [
+    label = "Onix::V3_0::ProductFormFeatureDescription", shape = oval
+  ]
+
+
+
+
+  ProductFormDescription [
+    label = "Onix::V3_0::ProductFormDescription", shape = oval
+  ]
+
+
+
+
+  ProductContentType [
+    label = "Onix::V3_0::ProductContentType", shape = oval
+  ]
+
+
+
+
+}

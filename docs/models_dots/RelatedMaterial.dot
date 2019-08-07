@@ -1,0 +1,65 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  RelatedMaterial [
+    label = "{Onix::V3_0::RelatedMaterial\l|\l|related_works[]\lrelated_products[]\l}"
+  ]
+
+  RelatedMaterial -> RelatedWork [arrowhead=normal]
+  RelatedMaterial -> RelatedProduct [arrowhead=normal]
+
+  RelatedWork [
+    label = "{Onix::V3_0::RelatedWork\l|work_relation_code\l|work_identifiers[]\l}"
+  ]
+
+  RelatedWork -> WorkIdentifier [arrowhead=normal]
+
+  WorkIdentifier [
+    label = "{Onix::V3_0::WorkIdentifier\l|work_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  RelatedProduct [
+    label = "{Onix::V3_0::RelatedProduct\l|product_form\l|product_relation_codes[]\lproduct_identifiers[]\lproduct_form_details[]\l}"
+  ]
+
+  RelatedProduct -> ProductRelationCode [arrowhead=normal]
+  RelatedProduct -> ProductIdentifier [arrowhead=normal]
+  RelatedProduct -> ProductFormDetail [arrowhead=normal]
+
+  ProductRelationCode [
+    label = "Onix::V3_0::ProductRelationCode", shape = oval
+  ]
+
+
+
+
+  ProductIdentifier [
+    label = "{Onix::V3_0::ProductIdentifier\l|product_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  ProductFormDetail [
+    label = "Onix::V3_0::ProductFormDetail", shape = oval
+  ]
+
+
+
+
+}

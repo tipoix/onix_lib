@@ -1,0 +1,23 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  CollectionSequence [
+    label = "{Onix::V3_0::CollectionSequence\l|collection_sequence_type\lcollection_sequence_type_name\lcollection_sequence_number\l|\l}"
+  ]
+
+
+
+
+}

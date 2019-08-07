@@ -1,0 +1,195 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  PublishingDetail [
+    label = "{Onix::V3_0::PublishingDetail\l|country_of_publication\lpublishing_status\llatest_reprint_number\lrow_sales_rights_type\l|imprints[]\lpublishers[]\lcity_of_publications[]\lproduct_contacts[]\lpublishing_status_notes[]\lpublishing_dates[]\lcopyright_statements[]\lsales_rights[]\lsales_restrictions[]\l}"
+  ]
+
+  PublishingDetail -> Imprint [arrowhead=normal]
+  PublishingDetail -> Publisher [arrowhead=normal]
+  PublishingDetail -> CityOfPublication [arrowhead=normal]
+  PublishingDetail -> ProductContact [arrowhead=normal]
+  PublishingDetail -> PublishingStatusNote [arrowhead=normal]
+  PublishingDetail -> PublishingDate [arrowhead=normal]
+  PublishingDetail -> CopyrightStatement [arrowhead=normal]
+  PublishingDetail -> SalesRights [arrowhead=normal]
+  PublishingDetail -> SalesRestriction [arrowhead=normal]
+
+  Imprint [
+    label = "{Onix::V3_0::Imprint\l|imprint_name\l|imprint_identifiers[]\l}"
+  ]
+
+  Imprint -> ImprintIdentifier [arrowhead=normal]
+
+  ImprintIdentifier [
+    label = "{Onix::V3_0::ImprintIdentifier\l|imprint_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  Publisher [
+    label = "{Onix::V3_0::Publisher\l|publishing_role\lpublisher_name\l|publisher_identifiers[]\lfundings[]\lwebsites[]\l}"
+  ]
+
+  Publisher -> PublisherIdentifier [arrowhead=normal]
+  Publisher -> Funding [arrowhead=normal]
+  Publisher -> Website [arrowhead=normal]
+
+  PublisherIdentifier [
+    label = "{Onix::V3_0::PublisherIdentifier\l|publisher_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  Funding [
+    label = "{Onix::V3_0::Funding\l|\l|funding_identifiers[]\l}"
+  ]
+
+  Funding -> FundingIdentifier [arrowhead=normal]
+
+  FundingIdentifier [
+    label = "{Onix::V3_0::FundingIdentifier\l|funding_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  Website [
+    label = "{Onix::V3_0::Website\l|website_role\lwebsite_link\l|website_descriptions[]\l}"
+  ]
+
+  Website -> WebsiteDescription [arrowhead=normal]
+
+  WebsiteDescription [
+    label = "Onix::V3_0::WebsiteDescription", shape = oval
+  ]
+
+
+
+
+  CityOfPublication [
+    label = "Onix::V3_0::CityOfPublication", shape = oval
+  ]
+
+
+
+
+  ProductContact [
+    label = "{Onix::V3_0::ProductContact\l|product_contact_role\lproduct_contact_name\lcontact_name\lemail_address\l|product_contact_identifiers[]\l}"
+  ]
+
+  ProductContact -> ProductContactIdentifier [arrowhead=normal]
+
+  ProductContactIdentifier [
+    label = "{Onix::V3_0::ProductContactIdentifier\l|product_contact_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  PublishingStatusNote [
+    label = "Onix::V3_0::PublishingStatusNote", shape = oval
+  ]
+
+
+
+
+  PublishingDate [
+    label = "{Onix::V3_0::PublishingDate\l|publishing_date_role\ldate_format\ldate\l|\l}"
+  ]
+
+
+
+
+  CopyrightStatement [
+    label = "{Onix::V3_0::CopyrightStatement\l|copyright_type\l|copyright_years[]\lcopyright_owners[]\l}"
+  ]
+
+  CopyrightStatement -> CopyrightYear [arrowhead=normal]
+  CopyrightStatement -> CopyrightOwner [arrowhead=normal]
+
+  CopyrightYear [
+    label = "Onix::V3_0::CopyrightYear", shape = oval
+  ]
+
+
+
+
+  CopyrightOwner [
+    label = "{Onix::V3_0::CopyrightOwner\l|person_name\lcorporate_name\l|copyright_owner_identifiers[]\l}"
+  ]
+
+  CopyrightOwner -> CopyrightOwnerIdentifier [arrowhead=normal]
+
+  CopyrightOwnerIdentifier [
+    label = "{Onix::V3_0::CopyrightOwnerIdentifier\l|copyright_owner_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  SalesRights [
+    label = "{Onix::V3_0::SalesRights\l|sales_rights_type\lpublisher_name\l|territory\lsales_restrictions[]\lproduct_identifiers[]\l}"
+  ]
+
+  SalesRights -> Territory [arrowhead=none]
+  SalesRights -> SalesRestriction [arrowhead=normal]
+  SalesRights -> ProductIdentifier [arrowhead=normal]
+
+  Territory [
+    label = "{Onix::V3_0::Territory\l|countries_included\lregions_included\lregions_excluded\lcountries_excluded\l|\l}"
+  ]
+
+
+
+
+  SalesRestriction [
+    label = "{Onix::V3_0::SalesRestriction\l|sales_restriction_type\lstart_date\lend_date\l|sales_outlets[]\lsales_restriction_notes[]\l}"
+  ]
+
+  SalesRestriction -> SalesOutlet [arrowhead=normal]
+  SalesRestriction -> SalesRestrictionNote [arrowhead=normal]
+
+  SalesOutlet [
+    label = "{Onix::V3_0::SalesOutlet\l|sales_outlet_name\l|sales_outlet_identifiers[]\l}"
+  ]
+
+  SalesOutlet -> SalesOutletIdentifier [arrowhead=normal]
+
+  SalesOutletIdentifier [
+    label = "{Onix::V3_0::SalesOutletIdentifier\l|sales_outlet_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  SalesRestrictionNote [
+    label = "Onix::V3_0::SalesRestrictionNote", shape = oval
+  ]
+
+
+
+
+  ProductIdentifier [
+    label = "{Onix::V3_0::ProductIdentifier\l|product_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+
+}

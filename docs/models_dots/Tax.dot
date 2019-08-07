@@ -1,0 +1,37 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+  Tax [
+    label = "{Onix::V3_0::Tax\l|tax_type\ltax_rate_code\ltax_rate_percent\ltaxable_amount\ltax_amount\l|product_identifiers[]\lprice_part_descriptions[]\l}"
+  ]
+
+  Tax -> ProductIdentifier [arrowhead=normal]
+  Tax -> PricePartDescription [arrowhead=normal]
+
+  ProductIdentifier [
+    label = "{Onix::V3_0::ProductIdentifier\l|product_id_type\lid_type_name\lid_value\l|\l}"
+  ]
+
+
+
+
+  PricePartDescription [
+    label = "Onix::V3_0::PricePartDescription", shape = oval
+  ]
+
+
+
+
+}
