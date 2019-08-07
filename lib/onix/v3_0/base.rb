@@ -69,6 +69,72 @@ module Onix
         @subnodesa
       end
 
+      def self.value?
+        self.subnodes.size + self.subnodesa.size == 0
+      end
+
+      def self.to_dot(reader, full_dot: true, already_treated: [])
+        if full_dot
+          template_str = <<-ERB
+digraph G {
+  fontname = "Bitstream Vera Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    shape = "record"
+  ]
+
+  edge [
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+  ]
+
+<%= self.to_dot reader, full_dot: false, already_treated: already_treated %>
+}
+          ERB
+          template = ERB.new template_str, nil, '-'
+
+          template.result(binding)
+        else
+          self_class_name = self.name.split('::').last
+          return "" if already_treated.include?(self_class_name)
+          already_treated << self_class_name
+          subs_strs = []
+          subs_links_strs = []
+          attrs_dot_strs = []
+          subs_attrs_strs = []
+          self.subnodes.each do |node_class, node_attr|
+            sub_class = reader.node_class(node_class)
+            if sub_class.value?
+              subs_attrs_strs << node_attr
+            else
+              subs_strs << sub_class.to_dot(reader, full_dot: false, already_treated: already_treated)
+              subs_links_strs << node_class + " [arrowhead=none]"
+              attrs_dot_strs << node_attr
+            end
+          end
+          self.subnodesa.each do |node_class, node_attr|
+            sub_class = reader.node_class(node_class)
+            subs_strs << sub_class.to_dot(reader, full_dot: false, already_treated: already_treated)
+            subs_links_strs << node_class + " [arrowhead=normal]"
+            attrs_dot_strs << "#{node_attr}[]"
+          end
+          res = "  #{self_class_name} [\n"
+          if attrs_dot_strs.size + subs_attrs_strs.size == 0
+            res += "    label = \"#{self.name}\", shape = oval\n"
+          else
+            res += "    label = \"{#{self.name}\\l|#{subs_attrs_strs.join("\\l")}\\l|#{attrs_dot_strs.join("\\l")}\\l}\"\n"
+          end
+          res += "  ]\n\n"
+          res += subs_links_strs.map {|sub| "  #{self_class_name} -> #{sub}"}.join("\n")
+          res += "\n\n"
+          res += subs_strs.join("\n")
+          res
+        end
+      end
+
       def initialize
         if self.class.text_content?
           text_content_attr_name = self.class.text_content
