@@ -363,6 +363,8 @@ digraph G {
       end
 
       def ==(other)
+        return false if other.nil?
+
         if other.is_a?(String) || other.is_a?(Symbol)
           return self.str_value == other
         end
@@ -376,12 +378,12 @@ digraph G {
         end
         self.class.subnodes.each do |_, attr_name|
           obj = self.send "#{attr_name}"
-          other_obj = self.send "#{attr_name}"
+          other_obj = other.send "#{attr_name}"
           return false unless obj == other_obj
         end
         self.class.subnodesa.each do |_, attr_name|
           obj = self.send "#{attr_name}"
-          other_obj = self.send "#{attr_name}"
+          other_obj = other.send "#{attr_name}"
           return false if obj.nil? ^ other_obj.nil?
           return false if obj.size != other_obj.size
           obj.each_with_index do |o, i|
@@ -390,6 +392,128 @@ digraph G {
         end
 
         return true
+      end
+
+      # Needed for Array - and & methods
+      def hash
+        intermediate_representation.hash
+      end
+
+      # Needed for Array - and & methods
+      def eql?(other)
+        self == other
+      end
+
+      def map_array_diff(obj, other_obj)
+        same = obj & other_obj
+        added_or_changed = obj - other_obj
+        removed_or_changed = other_obj - obj
+        added = added_or_changed - removed_or_changed
+        removed = removed_or_changed - added_or_changed
+        changed = added_or_changed - added
+        other_changed = removed_or_changed - removed
+
+        added_indexes = added.map {|ao| obj.index ao }
+        removed_indexes = removed.map {|ro| other_obj.index ro }
+
+        diff_map = {}
+        same.each do |so|
+          from_index = other_obj.index so
+          to_index = obj.index so
+          diff_map[from_index] = to_index
+        end
+
+        (added_indexes & removed_indexes).each do |changed_index|
+          diff_map[changed_index] = changed_index
+        end
+
+        (removed_indexes - added_indexes).each do |removed_index|
+          diff_map[removed_index] = nil
+        end
+
+        (added_indexes - removed_indexes).each do |added_index|
+          # find where to insert it
+          prev_index = diff_map.keys.sort { |a,b| a && b ? a <=> b : a ? -1 : 1 }.select {|i| i.nil? || i <= added_index }.last
+          next_index = diff_map.keys.sort { |a,b| a && b ? a <=> b : a ? -1 : 1 }.select {|i| !i.nil? && i > added_index }.first
+          next_index ||= diff_map.keys.size
+          diff_map[(next_index + prev_index) / 2.0] = added_index
+        end
+
+        diff_map
+      end
+
+      def diff_from(other)
+        res = {
+          added: {},
+          changed: {},
+          removed: {},
+        }
+
+        if self.class.text_content?
+          res[:changed]['str_value'] = true if self.str_value != other.str_value
+        end
+        self.class.node_attributes.each do |key, type|
+          obj = self.send key
+          other_obj = other.send key
+          res[:added][key] = true if obj && other_obj.nil?
+          res[:removed][key] = true if obj.nil? && other_obj
+          res[:changed][key] = true unless obj == other_obj
+        end
+        self.class.subnodes.each do |_, attr_name|
+          obj = self.send "#{attr_name}"
+          other_obj = other.send "#{attr_name}"
+          res[:added][attr_name] = true if obj && other_obj.nil?
+          res[:removed][attr_name] = true if obj.nil? && other_obj
+          if obj && other_obj
+            node_diff = obj.diff_from other_obj
+            res[:changed][attr_name] = node_diff unless node_diff.empty?
+          end
+        end
+        self.class.subnodesa.each do |_, attr_name|
+          obj = self.send "#{attr_name}"
+          other_obj = other.send "#{attr_name}"
+
+          diff_map = map_array_diff obj || [], other_obj || []
+
+          diff_map.keys.sort { |a,b| a && b ? a <=> b : a ? -1 : 1 }.each do |key|
+            from = nil
+            from = other_obj.at(key) if key.to_i == key.to_f
+            to = diff_map[key] ? obj.at(diff_map[key]) : nil
+            if from.nil?
+              # Added
+              res[:added][attr_name] ||= []
+              res[:added][attr_name] << {
+                map_from: nil,
+                map_to: diff_map[key],
+              }
+            elsif to.nil?
+              # Removed
+              res[:removed][attr_name] ||= []
+              res[:removed][attr_name] << {
+                map_from: key,
+                map_to: nil,
+              }
+            else
+              # Changed
+              node_diff = to.diff_from from
+              unless node_diff.empty?
+                res[:changed][attr_name] ||= []
+                res[:changed][attr_name] << {
+                  map_from: key,
+                  map_to: diff_map[key],
+                  diff: node_diff,
+                }
+              end
+            end
+          end
+        end
+
+        # delete empty keys
+        res.delete(:added) if res[:added].empty? && res[:added] != true
+        res.delete(:changed) if res[:changed].empty? && res[:changed] != true
+        res.delete(:removed) if res[:removed].empty? && res[:removed] != true
+
+        res
       end
 
       def to_html
@@ -402,22 +526,22 @@ digraph G {
             return ActionController::Base.helpers.content_tag('span', self.str_value, class: 'value')
           end
         end
-    
+
         self.class.node_attributes.each do |key, type|
           # obj = self.send key
           # res[key] = obj unless obj.nil?
         end
-    
+
         self.class.subnodes.each do |_, attr_name|
           obj = self.send "#{attr_name}"
-    
+
           res << ActionController::Base.helpers.content_tag('li') do
             ActionController::Base.helpers.content_tag('span', attr_name, class: 'key') + ActionController::Base.helpers.content_tag('span', ': ', class: 'sep') + obj.to_html
           end unless obj.nil?
         end
         self.class.subnodesa.each do |_, attr_name|
           objs = self.send "#{attr_name}"
-    
+
           res << ActionController::Base.helpers.content_tag('li') do
             ActionController::Base.helpers.content_tag('span', attr_name, class: 'key') + ActionController::Base.helpers.content_tag('span', ': ', class: 'sep') +
             ActionController::Base.helpers.content_tag('ul', class: 'display-array') do
@@ -427,7 +551,7 @@ digraph G {
             end
           end unless objs.nil? || objs.size == 0
         end
-    
+
         ActionController::Base.helpers.content_tag('ul') do
           res.inject(&:+)
         end
