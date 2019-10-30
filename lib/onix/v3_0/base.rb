@@ -475,21 +475,24 @@ digraph G {
 
           diff_map = map_array_diff obj || [], other_obj || []
 
+          map_diff_index = 0
           diff_map.keys.sort { |a,b| a && b ? a <=> b : a ? -1 : 1 }.each do |key|
             from = nil
             from = other_obj.at(key) if key.to_i == key.to_f
             to = diff_map[key] ? obj.at(diff_map[key]) : nil
             if from.nil?
               # Added
-              res[:added][attr_name] ||= []
-              res[:added][attr_name] << {
+              res[:changed][attr_name] ||= []
+              res[:changed][attr_name] << {
+                map_diff_index: map_diff_index,
                 map_from: nil,
                 map_to: diff_map[key],
               }
             elsif to.nil?
               # Removed
-              res[:removed][attr_name] ||= []
-              res[:removed][attr_name] << {
+              res[:changed][attr_name] ||= []
+              res[:changed][attr_name] << {
+                map_diff_index: map_diff_index,
                 map_from: key,
                 map_to: nil,
               }
@@ -499,12 +502,15 @@ digraph G {
               unless node_diff.empty?
                 res[:changed][attr_name] ||= []
                 res[:changed][attr_name] << {
+                  map_diff_index: map_diff_index,
                   map_from: key,
                   map_to: diff_map[key],
                   diff: node_diff,
                 }
               end
             end
+
+            map_diff_index += 1
           end
         end
 
@@ -516,14 +522,31 @@ digraph G {
         res
       end
 
-      def to_html
+      def to_html(show_diff: false, diff_map: nil, from: nil)
         res = []
-    
+
         if self.class.text_content?
           if self.class.from_code_list?
-            return ActionController::Base.helpers.content_tag('span', self.str_value, class: 'value') + ActionController::Base.helpers.content_tag('span', " (#{self.for_humans})")
+            if show_diff && diff_map && from && diff_map[:changed]
+              return ActionController::Base.helpers.content_tag('span', self.str_value, class: 'value changed') +
+                ActionController::Base.helpers.content_tag('span', " (#{self.for_humans})", class: 'human changed') +
+                ActionController::Base.helpers.content_tag('span', class: 'value was') do
+                  ActionController::Base.helpers.content_tag('span', ' was: ') +
+                  from.to_html
+                end
+            else
+              return ActionController::Base.helpers.content_tag('span', self.str_value, class: 'value') + ActionController::Base.helpers.content_tag('span', " (#{self.for_humans})", class: 'human')
+            end
           else
-            return ActionController::Base.helpers.content_tag('span', self.str_value, class: 'value')
+            if show_diff && diff_map && from && diff_map[:changed]
+              return ActionController::Base.helpers.content_tag('span', self.str_value, class: 'value changed') +
+                ActionController::Base.helpers.content_tag('span', class: 'value was') do
+                  ActionController::Base.helpers.content_tag('span', ' was: ') +
+                  from.to_html
+                end
+            else
+              return ActionController::Base.helpers.content_tag('span', self.str_value, class: 'value')
+            end
           end
         end
 
@@ -535,19 +558,76 @@ digraph G {
         self.class.subnodes.each do |_, attr_name|
           obj = self.send "#{attr_name}"
 
+          sub_diff_map = nil
+          modifier_class = ''
+          if diff_map
+            if diff_map[:changed]
+              sub_diff_map ||= diff_map[:changed][attr_name]
+              modifier_class = 'dep_changed' if diff_map[:changed][attr_name]
+            end
+            if diff_map[:added]
+              sub_diff_map ||= diff_map[:added][attr_name]
+              modifier_class = 'added' if diff_map[:added][attr_name]
+            end
+            if diff_map[:removed]
+              sub_diff_map ||= diff_map[:removed][attr_name]
+              modifier_class = 'removed' if diff_map[:removed][attr_name]
+            end
+          end
+          sub_from = from ? from.send("#{attr_name}") : nil
+
           res << ActionController::Base.helpers.content_tag('li') do
-            ActionController::Base.helpers.content_tag('span', attr_name, class: 'key') + ActionController::Base.helpers.content_tag('span', ': ', class: 'sep') + obj.to_html
+            ActionController::Base.helpers.content_tag('span', attr_name, class: "key #{modifier_class}") + ActionController::Base.helpers.content_tag('span', ': ', class: 'sep') +
+            obj.to_html(show_diff: show_diff, diff_map: sub_diff_map, from: sub_from)
           end unless obj.nil?
         end
         self.class.subnodesa.each do |_, attr_name|
           objs = self.send "#{attr_name}"
 
+          sub_diff_map_a = []
+          modifier_class = ''
+          if diff_map
+            if diff_map[:changed]
+              sub_diff_map_a += diff_map[:changed][attr_name] if diff_map[:changed][attr_name]
+              modifier_class = 'dep_changed' if diff_map[:changed][attr_name]
+            end
+          end
+          sub_from_a = from ? from.send("#{attr_name}") : nil
+
           res << ActionController::Base.helpers.content_tag('li') do
-            ActionController::Base.helpers.content_tag('span', attr_name, class: 'key') + ActionController::Base.helpers.content_tag('span', ': ', class: 'sep') +
+            ActionController::Base.helpers.content_tag('span', attr_name, class: "key #{modifier_class}") + ActionController::Base.helpers.content_tag('span', ': ', class: 'sep') +
             ActionController::Base.helpers.content_tag('ul', class: 'display-array') do
-              objs.map do |obj|
-                ActionController::Base.helpers.content_tag('li', obj.to_html)
-              end.inject(&:+)
+              element_objs = objs.map.with_index do |obj, index|
+                # find diff_map and sub_from using map_to index
+                tmp_sub_diff_map = sub_diff_map_a && sub_diff_map_a.select {|dm| dm[:map_to] == index}.first
+                sub_diff_map = tmp_sub_diff_map ? tmp_sub_diff_map[:diff] : nil
+                sub_from = nil
+                element_modifier = ''
+                if tmp_sub_diff_map.nil?
+                  # No change
+                elsif tmp_sub_diff_map[:map_from].nil?
+                  # Added element
+                  element_modifier = 'added'
+                else
+                  if sub_from_a.nil?
+                    # Added element (element array not even present in from)
+                    element_modifier = 'added'
+                  else
+                    # Modified element
+                    sub_from = sub_from_a[tmp_sub_diff_map[:map_from]]
+                  end
+                end
+                ActionController::Base.helpers.content_tag('li', obj.to_html(show_diff: show_diff, diff_map: sub_diff_map, from: sub_from), class: element_modifier)
+              end
+              # Treat after deleted objects
+              if sub_diff_map_a && sub_from_a
+                sub_diff_map_a.select {|dm| dm[:map_to] == nil}.each do |removed_dm|
+                  removed_elt = sub_from_a[removed_dm[:map_from]]
+                  removed_obj = ActionController::Base.helpers.content_tag('li', removed_elt.to_html, class: 'removed')
+                  element_objs.insert removed_dm[:map_diff_index], removed_obj
+                end
+              end
+              element_objs.inject(&:+)
             end
           end unless objs.nil? || objs.size == 0
         end
@@ -555,6 +635,7 @@ digraph G {
         ActionController::Base.helpers.content_tag('ul') do
           res.inject(&:+)
         end
+
       end
 
     end
