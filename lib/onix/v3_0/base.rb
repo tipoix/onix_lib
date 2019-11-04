@@ -434,6 +434,7 @@ digraph G {
         (added_indexes - removed_indexes).each do |added_index|
           # find where to insert it
           prev_index = diff_map.keys.sort { |a,b| a && b ? a <=> b : a ? -1 : 1 }.select {|i| i.nil? || i <= added_index }.last
+          prev_index ||= (diff_map.keys.min || 0) - 1
           next_index = diff_map.keys.sort { |a,b| a && b ? a <=> b : a ? -1 : 1 }.select {|i| !i.nil? && i > added_index }.first
           next_index ||= diff_map.keys.size
           diff_map[(next_index + prev_index) / 2.0] = added_index
@@ -473,7 +474,7 @@ digraph G {
           obj = self.send "#{attr_name}"
           other_obj = other.send "#{attr_name}"
 
-          diff_map = map_array_diff obj || [], other_obj || []
+          diff_map = map_array_diff(obj || [], other_obj || [])
 
           map_diff_index = 0
           diff_map.keys.sort { |a,b| a && b ? a <=> b : a ? -1 : 1 }.each do |key|
@@ -528,24 +529,28 @@ digraph G {
         if self.class.text_content?
           if self.class.from_code_list?
             if show_diff && diff_map && from && diff_map[:changed]
-              return ActionController::Base.helpers.content_tag('span', self.str_value, class: 'value changed') +
+              return ActionController::Base.helpers.content_tag('span', self.str_value || 'no-value', class: 'value changed') +
                 ActionController::Base.helpers.content_tag('span', " (#{self.for_humans})", class: 'human changed') +
                 ActionController::Base.helpers.content_tag('span', class: 'value was') do
                   ActionController::Base.helpers.content_tag('span', ' was: ') +
                   from.to_html
                 end
             else
-              return ActionController::Base.helpers.content_tag('span', self.str_value, class: 'value') + ActionController::Base.helpers.content_tag('span', " (#{self.for_humans})", class: 'human')
+              return ActionController::Base.helpers.content_tag('span', self.str_value || 'no-value', class: 'value') + ActionController::Base.helpers.content_tag('span', " (#{self.for_humans})", class: 'human')
             end
           else
             if show_diff && diff_map && from && diff_map[:changed]
-              return ActionController::Base.helpers.content_tag('span', self.str_value, class: 'value changed') +
+              return ActionController::Base.helpers.content_tag('span', self.str_value || 'no-value', class: 'value changed') +
                 ActionController::Base.helpers.content_tag('span', class: 'value was') do
                   ActionController::Base.helpers.content_tag('span', ' was: ') +
                   from.to_html
                 end
             else
-              return ActionController::Base.helpers.content_tag('span', self.str_value, class: 'value')
+              if self.str_value.nil? || self.str_value.empty?
+                return ActionController::Base.helpers.content_tag('span', self.str_value.inspect, class: 'value')
+              else
+                return ActionController::Base.helpers.content_tag('span', self.str_value, class: 'value')
+              end
             end
           end
         end
@@ -560,7 +565,9 @@ digraph G {
 
           sub_diff_map = nil
           modifier_class = ''
-          if diff_map
+          if diff_map == true
+
+          elsif diff_map
             if diff_map[:changed]
               sub_diff_map ||= diff_map[:changed][attr_name]
               modifier_class = 'dep_changed' if diff_map[:changed][attr_name]
@@ -586,7 +593,9 @@ digraph G {
 
           sub_diff_map_a = []
           modifier_class = ''
-          if diff_map
+          if diff_map == true
+
+          elsif diff_map
             if diff_map[:changed]
               sub_diff_map_a += diff_map[:changed][attr_name] if diff_map[:changed][attr_name]
               modifier_class = 'dep_changed' if diff_map[:changed][attr_name]
@@ -629,7 +638,7 @@ digraph G {
               end
               element_objs.inject(&:+)
             end
-          end unless objs.nil? || objs.size == 0
+          end unless objs.nil? || (objs.size == 0 && (sub_from_a.nil? || sub_from_a.size == 0))
         end
 
         ActionController::Base.helpers.content_tag('ul') do
