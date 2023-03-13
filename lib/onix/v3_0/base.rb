@@ -21,14 +21,21 @@ module Onix
         @from_code_list = code_list
       end
 
-      def self.node_attribute_accessor(name, of_type: 'string')
-        node_attributes[name] = of_type
-      end
-
       def self.node_attributes
         @node_attributes ||= {}
         @node_attributes.merge! superclass.node_attributes if superclass.ancestors.include? Base
         @node_attributes
+      end
+
+      def self.node_attributes_default
+        @node_attributes_default ||= {}
+        @node_attributes_default.merge! superclass.node_attributes_default if superclass.ancestors.include? Base
+        @node_attributes_default
+      end
+
+      def self.node_attribute_accessor(name, of_type: 'string', default: nil)
+        node_attributes[name] = of_type
+        node_attributes_default[name] = default if default
       end
 
       def self.text_content_accessor(name)
@@ -51,10 +58,11 @@ module Onix
 
       def self.subnode_accessor(name, for_tag: nil, min_occurs: '0', max_occurs: '1')
         if max_occurs == 'unbounded' || max_occurs.to_i > 1
-          subnodesa[for_tag || name] = name
+          self.subnodesa[for_tag || name] = name
         else
-          subnodes[for_tag || name] = name
+          self.subnodes[for_tag || name] = name
         end
+        self.ordered_subnodes << (for_tag || name)
       end
 
       def self.subnodes
@@ -67,6 +75,12 @@ module Onix
         @subnodesa ||= {}
         @subnodesa.merge! superclass.subnodesa if superclass.ancestors.include? Base
         @subnodesa
+      end
+
+      def self.ordered_subnodes
+        @ordered_subnodes ||= []
+        @ordered_subnodes += superclass.ordered_subnodes if superclass.ancestors.include? Base
+        @ordered_subnodes
       end
 
       def self.value?
@@ -169,6 +183,9 @@ digraph G {
                 instance_variable_get("@#{attr_name}")
               end
             end
+          end
+          if self.class.node_attributes_default[attr_name]
+            instance_variable_set("@#{attr_name}", self.class.node_attributes_default[attr_name])
           end
         end
 
@@ -281,6 +298,56 @@ digraph G {
         end
 
         self
+      end
+
+      def xml_node_name
+        self.class.name.demodulize
+      end
+
+      def xml_node_class(xml_node_name, reader=nil)
+        res = nil
+        if reader
+          res = reader.node_class('ONIXMessage')
+        end
+        res ||= Onix::V3_0.const_get(xml_node_name)
+        res
+      end
+
+      def to_xml(builder=nil)
+        builder ||= Nokogiri::XML::Builder.new(encoding: 'UTF-8')
+
+        self.build_xml(builder).to_xml
+      end
+
+      def build_xml(builder=nil)
+        builder ||= Nokogiri::XML::Builder.new(encoding: 'UTF-8')
+
+        xml_node_attributes = self.class.node_attributes.map do |attribute_name, attribute_type|
+          value = self.send(attribute_name)
+          value.nil? ? nil : [attribute_name, value]
+        end.compact.to_h
+        builder.send(self.xml_node_name, xml_node_attributes) do |xml_node|
+          if self.class.text_content?
+            # set text content
+            xml_node << self.str_value
+          else
+            self.class.ordered_subnodes.each do |node_name|
+              if self.class.subnodes.has_key?(node_name)
+                attr_name = self.class.subnodes[node_name]
+                obj = self.send "#{attr_name}"
+                obj.build_xml(xml_node) unless obj.nil?
+              elsif self.class.subnodesa.has_key?(node_name)
+                attr_name = self.class.subnodesa[node_name]
+                objs = self.send "#{attr_name}"
+                objs.each do |obj|
+                  obj.build_xml(xml_node) unless obj.nil?
+                end
+              end
+            end
+          end
+        end
+
+        builder
       end
 
       def consolidate
