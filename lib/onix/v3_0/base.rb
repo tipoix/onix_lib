@@ -80,6 +80,7 @@ module Onix
       def self.ordered_subnodes
         @ordered_subnodes ||= []
         @ordered_subnodes += superclass.ordered_subnodes if superclass.ancestors.include? Base
+        @ordered_subnodes.uniq!
         @ordered_subnodes
       end
 
@@ -650,10 +651,17 @@ digraph G {
           end
           sub_from = from ? from.send("#{attr_name}") : nil
 
-          res << ActionController::Base.helpers.content_tag('li') do
-            ActionController::Base.helpers.content_tag('span', attr_name, class: "key #{modifier_class}") + ActionController::Base.helpers.content_tag('span', ': ', class: 'sep') +
-            obj.to_html(show_diff: show_diff, diff_map: sub_diff_map, from: sub_from)
-          end unless obj.nil?
+          if obj.nil?
+            res << ActionController::Base.helpers.content_tag('li', class: modifier_class) do
+              ActionController::Base.helpers.content_tag('span', attr_name, class: "key #{modifier_class}") + ActionController::Base.helpers.content_tag('span', ': ', class: 'sep') +
+              sub_from.to_html
+            end unless sub_from.nil?
+          else
+            res << ActionController::Base.helpers.content_tag('li', class: modifier_class) do
+              ActionController::Base.helpers.content_tag('span', attr_name, class: "key #{modifier_class}") + ActionController::Base.helpers.content_tag('span', ': ', class: 'sep') +
+              obj.to_html(show_diff: show_diff, diff_map: sub_diff_map, from: sub_from)
+            end
+          end
         end
         self.class.subnodesa.each do |_, attr_name|
           objs = self.send "#{attr_name}"
